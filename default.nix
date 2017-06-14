@@ -1,3 +1,4 @@
+# -*- mode: nix -*-
 {
   pkgs ? import <nixpkgs> { }
 }:
@@ -15,12 +16,15 @@ let
     sha256 = "1fw9ryrz1qzbaxnjqqf91yxk1pb9hgci0z0pzw53f675almmv9q2";
   }) {};
 
+  jsonschema_c = pinned_pkgs.callPackage ./jsonschema-c.nix { };
+
 in with pinned_pkgs; stdenv.mkDerivation {
   name = "repeat-aft";
   src = ./.;
   buildInputs = [
     python3
     python3Packages.sphinx
+    python3Packages.jsonschema
   ];
 
   meta = with stdenv.lib; {
