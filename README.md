@@ -1,5 +1,7 @@
 # RepeAT Automator
 
+[![Documentation Status](https://readthedocs.org/projects/repeat-aft/badge/?version=latest)](http://repeat-aft.readthedocs.io/en/latest/?badge=latest)
+
 The RepeAT automator is a tool for improving reproducibility in the biomedical
 sciences. It builds on a systematic review of best practices in research
 reproducibility, producing partially automated analyses of papers.
@@ -32,7 +34,7 @@ in Travis CI and hosted on Github pages).
    
 [ripeta]: http://www.ripeta.com/
 [frontend]: https://github.com/ripeta/repeat-frontend
-[docs]: TODO
+[docs]: http://repeat-aft.readthedocs.io/en/latest/?badge=latest
 [sphinx]: http://www.sphinx-doc.org/en/stable/
 [readthedocs]: http://www.readthedocs.org
 [swagger]: http://swagger.io/
