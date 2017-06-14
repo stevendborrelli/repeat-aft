@@ -1,6 +1,7 @@
 # RepeAT Automator
 
 [![Documentation Status](https://readthedocs.org/projects/repeat-aft/badge/?version=latest)](http://repeat-aft.readthedocs.io/en/latest/?badge=latest)
+[![Build Status](https://travis-ci.org/ripeta/repeat-aft.svg?branch=master)](https://travis-ci.org/ripeta/repeat-aft)
 
 The RepeAT automator is a tool for improving reproducibility in the biomedical
 sciences. It builds on a systematic review of best practices in research
