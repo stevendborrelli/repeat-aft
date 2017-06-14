@@ -1,0 +1,16 @@
+[
+  {
+    "field_id": "id1",
+    "label": "1st variable",
+    "field_type": {}
+  },
+  {
+    "field_id": "id2",
+    "label": "2nd variable",
+    "note": "note for user",
+    "identifier": false,
+    "category": "blah",
+    "field_type": {
+    }
+  }
+]
