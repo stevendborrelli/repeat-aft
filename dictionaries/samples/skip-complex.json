@@ -1,0 +1,28 @@
+[
+    {
+        "field_id": "question1",
+        "label": "Some question?",
+        "field_type": "binary"
+    },
+    {
+        "field_id": "question2",
+        "label": "Some other question?",
+        "field_type": "text"
+    },
+    {
+        "field_id": "question3",
+        "label": "A third question?",
+        "field_type": "binary",
+        "skip_logic": {
+            "or": [
+                {
+                    "and": [
+                        { "field_id": "question1", "value": true },
+                        { "field_id": "question2", "value": "foo" }
+                    ]
+                },
+                { "not": { "field_id": "question2", "value": "bar" } }
+            ]
+        }
+    }
+]

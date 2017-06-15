@@ -2,26 +2,7 @@
     "$schema":"http://json-schema.org/draft-04/schema#",
     "title": "Data dictionary",
     "description": "A schema describing data dictionaries for use with the RepeAT automator",
-    "id": "http://github.com/ripeta/repeat-aft/tree/master/dictionaries/dictionary.schema.json",
-
-    "definitions": {
-        "skip_logic_ref": {
-            "description": "A reference to another field, as used in skip logic",
-            "type": "object",
-            "properties": {
-                "field_id": {
-                    "description": "The field_id of the referenced field",
-                    "type": "string",
-                    "minLength": 1
-                },
-                "value": {
-                    "description": "What does the value of that field have to be?"
-                }
-            },
-            "additionalProperties": false,
-            "required": [ "field_id", "value" ]
-        }
-    },
+    "id": "dictionary.schema",
 
     "type": "array",
     "minItems": 1,
@@ -53,10 +34,11 @@
                 "type": "boolean",
                 "default": false
             },
+            "skip_logic": { "$ref": "#/definitions/skip_logic" },
             "validation_type": {
                 "description": "Pick any/several of a variety of built-in validations",
                 "type": "array",
-                "minLength": 1,
+                "minItems": 1,
                 "uniqueItems": true,
                 "items": {
                     "enum": [
@@ -75,85 +57,128 @@
                 }
             },
             "field_type": {
-                "description": "A variable can require one of several entry options: a binary choice, freeform text entry, checkboxes, etc.",
-                "type": "object",
                 "oneOf": [
                     {
-                        "description": "A binary choice",
-                        "properties": {
-                            "yes_text": { "type": "string", "default": "Yes"},
-                            "no_text": { "type": "string", "default": "No"}
-                        },
-                        "additionalProperties": false,
-                        "required": []
+                        "description": "Types needing no further options",
+                        "type": "string",
+                        "enum": [ "text", "binary", "instructions" ]
                     },
                     {
-                        "description": "Free-form text entry",
-                        "properties": {
-                            "prompt": { "type": "string", "default": "" }
-                        },
-                        "additionalProperties": false,
-                        "required": ["prompt"]
-                    },
-                    {
-                        "description": "A selection of one from many (radio)",
-                        "properties": {
-                            "exclusiveOptions": {
-                                "type": "array",
-                                "minItems": 2,
-                                "uniqueItems": true,
-                                "items": {
-                                    "type": "string",
-                                    "minLength": 1
-                                }
+                        "type": "object",
+                        "oneOf": [
+                            {
+                                "description": "A binary choice",
+                                "properties": {
+                                    "yes_text": { "type": "string", "default": "Yes"},
+                                    "no_text": { "type": "string", "default": "No"}
+                                },
+                                "additionalProperties": false,
+                                "required": [ "yes_text", "no_text" ]
                             },
-                            "custom" : {
-                                "description": "Also allow free-form entry if none of the options fit",
-                                "type": "boolean",
-                                "default": false
-                            }
-                        },
-                        "additionalProperties": false,
-                        "required": ["exclusiveOptions"]
-                    },
-                    {
-                        "description": "A selection of many from many (checkboxes)",
-                        "properties": {
-                            "inclusiveOptions": {
-                                "type": "array",
-                                "minItems": 2,
-                                "items": {
-                                    "type": "string",
-                                    "minLength": 1
-                                }
+                            {
+                                "description": "A selection of one from many (radio)",
+                                "properties": {
+                                    "exclusive_options": {
+                                        "type": "array",
+                                        "minItems": 2,
+                                        "uniqueItems": true,
+                                        "items": {
+                                            "type": "string",
+                                            "minLength": 1
+                                        }
+                                    },
+                                    "custom" : {
+                                        "description": "Also allow free-form entry if none of the options fit",
+                                        "type": "boolean",
+                                        "default": false
+                                    }
+                                },
+                                "additionalProperties": false,
+                                "required": ["exclusive_options"]
                             },
-                            "custom" : {
-                                "description": "Also allow free-form entry if none of the options fit",
-                                "type": "boolean",
-                                "default": false
+                            {
+                                "description": "A selection of many from many (checkboxes)",
+                                "properties": {
+                                    "inclusive_options": {
+                                        "type": "array",
+                                        "minItems": 2,
+                                        "items": {
+                                            "type": "string",
+                                            "minLength": 1
+                                        }
+                                    },
+                                    "custom" : {
+                                        "description": "Also allow free-form entry if none of the options fit",
+                                        "type": "boolean",
+                                        "default": false
+                                    }
+                                },
+                                "additionalProperties": false,
+                                "required": ["inclusive_options"]
                             }
-                        },
-                        "additionalProperties": false,
-                        "required": ["inclusiveOptions"]
+                        ]
                     }
                 ]
-            },
-            "skip_logic": {
-                "description": "Should this question only be asked if a certain other question was answered in a particular way? TODO: nested, recursive structure",
-                "properties": {
-                    "or": {
-                        "description": "All of these conditions must be met",
-                        "type": "array",
-                        "items": { "$ref": "#/definitions/skip_logic_ref" }
-                    },
-                    "and": {
-                        "description": "At least one of these conditions must be met",
-                        "type": "array",
-                        "items": { "$ref": "#/definitions/skip_logic_ref" }
-                    }
-                },
-                "additionalProperties": false
             }
+        }
+    },
+
+
+    "definitions" : {
+        "skip_logic": {
+            "type": "object",
+            "oneOf": [
+                {
+                    "title": "atomic",
+                    "description": "An atomic Boolean statement, namely a reference to another variable/question",
+                    "properties": {
+                        "field_id": {
+                            "description": "The field_id of the referenced field",
+                            "type": "string",
+                            "minLength": 1
+                        },
+                        "value": {
+                            "description": "What does the value of that field have to be?"
+                        }
+                    },
+                    "additionalProperties": false,
+                    "required": [ "field_id", "value" ]
+                },
+                {
+                    "title": "not",
+                    "properties": { "not": { "$ref": "#/definitions/skip_logic" } },
+                    "additionalProperties": false,
+                    "required": [ "not" ]
+                },
+
+                {
+                    "title": "and",
+                    "properties": {
+                        "and": {
+                            "type": "array",
+                            "minItems": 2,
+                            "uniqueItems": true,
+                            "items": { "$ref": "#/definitions/skip_logic" }
+                        }
+                    },
+                    "additionalProperties": false,
+                    "required": [ "and" ]
+                },
+
+                {
+                    "title": "or",
+                    "properties": {
+                        "or": {
+                            "type": "array",
+                            "minItems": 2,
+                            "uniqueItems": true,
+                            "items": { "$ref": "#/definitions/skip_logic" }
+                        }
+                    },
+                    "additionalProperties": false,
+                    "required": [ "or" ]
+                }
+            ]
         }
     }
 }

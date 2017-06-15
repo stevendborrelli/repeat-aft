@@ -1,0 +1,13 @@
+[
+    {
+        "field_id": "question1",
+        "label": "Some question?",
+        "field_type": "binary"
+    },
+    {
+        "field_id": "question2",
+        "label": "Some other question?",
+        "field_type": "binary",
+        "skip_logic": { "field_id": "question1", "value": true }
+    }
+]
