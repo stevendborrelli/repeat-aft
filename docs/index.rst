@@ -15,5 +15,6 @@ description of this project.
    :maxdepth: 2
 
    design
+   design/database
    usage
-   usage/data-dictionaries
+   usage/branching-logic
