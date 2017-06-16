@@ -1,0 +1,1425 @@
+[
+    {
+        "field_id": "record_id",
+        "category": "publication_overview_and_bibliographic_information",
+        "field_type": "text",
+        "label": "Record ID"
+    },
+    {
+        "field_id": "article_doi",
+        "category": "publication_overview_and_bibliographic_information",
+        "field_type": "text",
+        "label": "Article DOI"
+    },
+    {
+        "field_id": "journal_publication",
+        "category": "publication_overview_and_bibliographic_information",
+        "field_type": "text",
+        "label": "Journal of Publication"
+    },
+    {
+        "field_id": "publication_date",
+        "category": "publication_overview_and_bibliographic_information",
+        "field_type": "text",
+        "label": "Publication Date",
+        "field_note": "MM/DD/YYYY",
+        "validation_type": "date"
+    },
+    {
+        "field_id": "publication_issue",
+        "category": "publication_overview_and_bibliographic_information",
+        "field_type": "text",
+        "label": "Is the publication submitted as part of a special issue or editorial? If yes, please list the issue title."
+    },
+    {
+        "field_id": "author_fn",
+        "category": "publication_overview_and_bibliographic_information",
+        "field_type": "text",
+        "label": "Corresponding Author First Name",
+        "validation_type": "alpha_only",
+        "identifier": true
+    },
+    {
+        "field_id": "author_ln",
+        "category": "publication_overview_and_bibliographic_information",
+        "field_type": "text",
+        "label": "Corresponding Author Last Name",
+        "validation_type": "alpha_only",
+        "identifier": true
+    },
+    {
+        "field_id": "author_email",
+        "category": "publication_overview_and_bibliographic_information",
+        "field_type": "text",
+        "label": "Corresponding Author Email"
+    },
+    {
+        "field_id": "article_title",
+        "category": "publication_overview_and_bibliographic_information",
+        "field_type": "text",
+        "label": "Article Title"
+    },
+    {
+        "field_id": "institution_corr_author",
+        "category": "publication_overview_and_bibliographic_information",
+        "field_type": "text",
+        "label": "Institution of Corresponding Author",
+        "identifier": true
+    },
+    {
+        "field_id": "research_center",
+        "category": "publication_overview_and_bibliographic_information",
+        "field_type": "text",
+        "label": "Author's Affiliated Research Center"
+    },
+    {
+        "field_id": "clinical_domain",
+        "category": "publication_overview_and_bibliographic_information",
+        "label": "Clinical Domain Category",
+        "field_type": {
+            "exclusive_options": [
+                "Allergy/Immunology",
+                "Anatomy and NeuroBiology",
+                "Anesthesiology",
+                "Biochemistry & Molecular Biophysics",
+                "Biostatistics",
+                "Bone and Mineral",
+                "Cardiology",
+                "Cell Biology & Physiology",
+                "Dermatology",
+                "Developmental Biology",
+                "Endocrinology Gastroenterology",
+                "General Med Sciences",
+                "Genetics",
+                "Geriatrics & Nutrition",
+                "Health Behavior Research",
+                "Hematology",
+                "Hospital Medicine",
+                "Infectious Diseases",
+                "Internal Medicine",
+                "McDonnell Genome Institute",
+                "Medical Education Oncology",
+                "Molecular Microbiology",
+                "Neurology",
+                "Neuroscience",
+                "Neurosurgery",
+                "Obstetrics & Gynecology",
+                "Occupational Therapy",
+                "Ophthalmology and Visual Sciences",
+                "Orthopaedic Surgery",
+                "Otolaryngology",
+                "Pathology & Immunology",
+                "Pediatrics",
+                "Pharmacogenomics",
+                "Physical Therapy",
+                "Psychiatry",
+                "Pulmonary",
+                "Radiation Oncology",
+                "Radiology",
+                "Renal",
+                "Rheumatology",
+                "Surgery",
+                "Other"
+            ]
+        }
+    },
+    {
+        "field_id": "primary_research",
+        "category": "publication_overview_and_bibliographic_information",
+        "field_type": "binary",
+        "label": "Is the publication presenting primary research wherein new data is collected and/or secondary data is reused towards a new purpose?"
+    },
+    {
+        "field_id": "meta_analysis",
+        "category": "publication_overview_and_bibliographic_information",
+        "field_type": "binary",
+        "label": "Is the publication presenting a meta-analysis?"
+    },
+    {
+        "field_id": "reproducibilityresearch_yn",
+        "category": "publication_overview_and_bibliographic_information",
+        "field_type": "binary",
+        "label": "Is the publication presenting an attempt at reproducing research?"
+    },
+    {
+        "field_id": "hypothesis_gen_or_driv",
+        "category": "publication_overview_and_bibliographic_information",
+        "label": "Is the research hypothesis-driven or hypothesis-generating?",
+        "field_type": {
+            "exclusive_options": [
+                "Hypothesis Driven",
+                "Hypothesis Generating",
+                "Unclear"
+            ]
+        }
+    },
+    {
+        "field_id": "clear_hypothesis",
+        "category": "publication_overview_and_bibliographic_information",
+        "label": "Publication states null and alternative hypothesis?",
+        "field_type": {
+            "exclusive_options": [ "Yes", "No", "Unclear", "Not applicable" ]
+        }
+    },
+    {
+        "field_id": "reviewer",
+        "category": "publication_overview_and_bibliographic_information",
+        "label": "Reviewer name",
+        "field_type": {
+            "exclusive_options": [
+                "Leslie McIntosh",
+                "Anthony Juehne",
+                "Cynthia Hudson-Vitale",
+                "Sam Johnson",
+                "Xiaoyan Liu",
+                "Christian Lukas",
+                "Roberta Grannemann"
+            ]
+        }
+    },
+    {
+        "field_id": "funders",
+        "category": "publication_overview_and_bibliographic_information",
+        "field_type": "text",
+        "label": "Project funders",
+        "field_annotation": "Please list project funders separated by semi-colons"
+    },
+    {
+        "field_id": "grant_ids",
+        "category": "publication_overview_and_bibliographic_information",
+        "field_type": "text",
+        "label": "Grant identifiers",
+        "field_annotation": "If available, please list available grant IDs separated by semi-colons."
+    },
+    {
+        "field_id": "state_data_sources",
+        "category": "database_and_data_collection",
+        "field_type": "binary",
+        "label": "Publication states database(s) source(s) of data?"
+    },
+    {
+        "field_id": "state_database_where",
+        "category": "database_and_data_collection",
+        "field_note": "please select all that apply",
+        "skip_logic": "[state_data_sources] = '1'",
+        "label": "Publication states database(s) source(s) of data in the following location:",
+        "field_type": {
+            "inclusive_options": [
+                "Appendix",
+                "Body of text",
+                "Not stated",
+                "Supplementary materials"
+            ]
+        }
+    },
+    {
+        "field_id": "database_cited",
+        "category": "database_and_data_collection",
+        "field_type": "binary",
+        "label": "Does the publication include database citation(s)?"
+    },
+    {
+        "field_id": "query_script_shared",
+        "category": "database_and_data_collection",
+        "field_type": "binary",
+        "label": "Does the researcher share a query script for databases used throughout the data collection workflow?"
+    },
+    {
+        "field_id": "query_method_stated",
+        "category": "database_and_data_collection",
+        "field_type": "binary",
+        "label": "Do the authors state the methods used for collecting data?",
+        "field_note": "e.g., manual extraction from clinical records, EMR query application, and/or data broker"
+    },
+    {
+        "field_id": "query_method_location",
+        "category": "database_and_data_collection",
+        "label": "States query methodology in the following location:",
+        "skip_logic": "[query_method_stated] = '1'",
+        "field_type": {
+            "inclusive_options": [
+                "Appendix",
+                "Body of text",
+                "Supplementary materials (query script or metadata)"
+            ]
+        }
+    },
+    {
+        "field_id": "data_citations_instructions",
+        "category": "database_and_data_collection",
+        "field_type": "instructions",
+        "label": "In the boxes below, please enter the full name or citation for each applicable database listed within the publication. If less than four databases are cited, please complete sections for all applicable databases and leave the subsequent fields blank.",
+        "skip_logic": "[state_data_sources] = '1'"
+    },
+    {
+        "field_id": "db_citation_1",
+        "category": "database_and_data_collection",
+        "field_type": "notes",
+        "label": "Database Name 1",
+        "skip_logic": "[state_data_sources] = '1'"
+    },
+    {
+        "field_id": "db_doi_1",
+        "category": "database_and_data_collection",
+        "field_type": "text",
+        "label": "Database 1 DOI",
+        "skip_logic": "[state_data_sources] = '1'"
+    },
+    {
+        "field_id": "query_method_db_1",
+        "category": "database_and_data_collection",
+        "label": "Query methodology for Database 1",
+        "skip_logic": "[query_method_stated] = '1'",
+        "field_type": {
+            "inclusive_options": [
+                "Digital extraction through honest broker (with and/or without shared SQL/data extraction scripts)",
+                "Digital extraction through query interface",
+                "Manual extraction",
+                "Not Applicable/Not Stated"
+            ]
+        }
+    },
+    {
+        "field_id": "query_script_loc_db_1",
+        "category": "database_and_data_collection",
+        "label": "In which of the following does the researcher share a query script for Database 1:",
+        "skip_logic": "[query_script_shared] = '1'",
+        "field_type": {
+            "inclusive_options": [
+                "Affiliated Research Center Website",
+                "Appendix",
+                "Author's Institution or Departmental Website",
+                "Body of Text",
+                "Data Registry",
+                "Dataset Metadata",
+                "GitHub",
+                "Journal or Publication's Website",
+                "Not Stated",
+                "Readme file",
+                "Supplementary Materials"
+            ]
+        }
+    },
+    {
+        "field_id": "query_format_db_1",
+        "category": "database_and_data_collection",
+        "field_type": "text",
+        "label": "In what format are query documentation files shared for Database 1?",
+        "field_note": "Typical query documentation files may include SQL scripts, R/Python extraction code, text files, etc. Please enter all that apply separated by a semi-colon",
+        "skip_logic": "[query_script_shared] = '1'"
+    },
+    {
+        "field_id": "query_script_comments_1",
+        "category": "database_and_data_collection",
+        "field_type": "binary",
+        "label": "Does the shared query script for database 1 contain comments and/or notations for ease of reproducibility?",
+        "skip_logic": "[query_script_shared] = '1'"
+    },
+    {
+        "field_id": "query_doc_open_db_1",
+        "category": "database_and_data_collection",
+        "label": "Are query resources used throughout data collection proprietary or non-proprietary for database 1?",
+        "field_type": {
+            "exclusive_options": [ "Proprietary", "Non-proprietary" ]
+        },
+        "skip_logic": "[query_script_shared] = '1'"
+    },
+    {
+        "field_id": "db_metadata_1",
+        "category": "database_and_data_collection",
+        "field_type": "binary",
+        "label": "Does the author share the dataset metadata for database 1?",
+        "field_note": "Metadata may be in the form of 'readme' text file or an XML document. Which should include information about data extraction techniques, rights, etc.",
+        "skip_logic": "[state_data_sources] = '1'"
+    },
+    {
+        "field_id": "restriction_db_1",
+        "category": "database_and_data_collection",
+        "field_type": {
+            "exclusive_options": []
+        }
+        "label": "Level of restriction for access to database 1",
+        "select_choices_or_calculations": "Closed
+        Restricted departmental database
+        Restricted access to only those within author's institution or clinical practice
+ Restricted access requiring data request and IRB
+ Restricted access requiring data request
+ Open to public
+ Not Stated",
+        "skip_logic": "[state_data_sources] = '1'"
+    },
+    {
+        "field_id": "db_charge_1",
+        "category": "database_and_data_collection",
+        "field_type": {
+            "exclusive_options": []
+        }
+        "label": "Must one pay for access to database 1?",
+        "select_choices_or_calculations": "No
+ Yes
+ Not Applicable",
+        "skip_logic": "[state_data_sources] = '1'"
+    },
+    {
+        "field_id": "db_citation_2",
+        "category": "database_and_data_collection",
+        "field_type": "notes",
+        "label": "Database Name 2",
+        "skip_logic": "[state_data_sources] = '1'"
+    },
+    {
+        "field_id": "db_doi_2",
+        "category": "database_and_data_collection",
+        "field_type": "text",
+        "label": "Database 2 DOI",
+        "skip_logic": "[state_data_sources] = '1'"
+    },
+    {
+        "field_id": "query_method_db_2",
+        "category": "database_and_data_collection",
+        "field_type": {
+            "inclusive_options": []
+        }
+        "label": "Query methodology for database 2",
+        "select_choices_or_calculations": "Manual extraction
+ Digital extraction through query interface
+ Digital extraction through honest broker (with and/or without shared SQL/data extraction scripts)
+ Not Applicable/Unclear due to not stating query method",
+        "skip_logic": "[query_method_stated] = '1'"
+    },
+    {
+        "field_id": "query_script_loc_db_2",
+        "category": "database_and_data_collection",
+        "field_type": {
+            "inclusive_options": []
+        }
+        "label": "In which of the following does the researcher share a query script for Database 2:",
+        "select_choices_or_calculations": "Affiliated Research Center Website
+ Author's Institution or Departmental Website
+        Data Registry
+        Journal or Publication's Website
+ GitHub
+ Dataset Metadata
+ Readme file
+ Supplementary Materials
+ Appendix
+ Body of Text
+ Not Stated",
+        "skip_logic": "[query_script_shared] = '1'"
+    },
+    {
+        "field_id": "query_format_db_2",
+        "category": "database_and_data_collection",
+        "field_type": "text",
+        "label": "In what format are query documentation files shared for database 2?",
+        "field_note": "Typical query documentation files may include SQL scripts, R/Python extraction code, text files, etc. Please enter all that apply separated by a semi-colon",
+        "skip_logic": "[query_script_shared] = '1'"
+    },
+    {
+        "field_id": "query_script_comments_2",
+        "category": "database_and_data_collection",
+        "field_type": "binary",
+        "label": "Does the shared query script for database 2 contain comments and/or notations for ease of reproducibility?",
+        "skip_logic": "[query_script_shared] = '1'"
+    },
+    {
+        "field_id": "query_doc_open_db_2",
+        "category": "database_and_data_collection",
+        "field_type": {
+            "exclusive_options": []
+        }
+        "label": "Are query resources used throughout data collection proprietary or non-proprietary for database 2?",
+        "select_choices_or_calculations": "Proprietary
+ Non-Proprietary",
+        "skip_logic": "[query_script_shared] = '1'"
+    },
+    {
+        "field_id": "db_metadata_2",
+        "category": "database_and_data_collection",
+        "field_type": "binary",
+        "label": "Does the author share the dataset metadata for database 2?",
+        "field_note": "Metadata may be in the form of 'readme' text file or an XML document. Which should include information about data extraction techniques, rights, etc.",
+        "skip_logic": "[state_data_sources] = '1'"
+    },
+    {
+        "field_id": "db_2_restriction",
+        "category": "database_and_data_collection",
+        "field_type": {
+            "exclusive_options": []
+        }
+        "label": "Level of restriction for access to database 2",
+        "select_choices_or_calculations": "Closed
+ Restricted departmental database
+ Restricted access to only those within author's institution or clinical practice
+        Restricted access requiring data request and IRB
+        Restricted access requiring data request
+        Open to public
+        Not Stated",
+        "skip_logic": "[state_data_sources] = '1'"
+    },
+    {
+        "field_id": "db_charge_2",
+        "category": "database_and_data_collection",
+        "field_type": {
+            "exclusive_options": []
+        }
+        "label": "Must one pay for access to database 2?",
+        "select_choices_or_calculations": "No
+        Yes
+        Not Applicable",
+        "skip_logic": "[state_data_sources] = '1'"
+    },
+    {
+        "field_id": "db_citation_3",
+        "category": "database_and_data_collection",
+        "field_type": "notes",
+        "label": "Database Name 3",
+        "skip_logic": "[state_data_sources] = '1'"
+    },
+    {
+        "field_id": "db_doi_3",
+        "category": "database_and_data_collection",
+        "field_type": "text",
+        "label": "Database 3 DOI",
+        "skip_logic": "[state_data_sources] = '1'"
+    },
+    {
+        "field_id": "query_method_3",
+        "category": "database_and_data_collection",
+        "field_type": {
+            "inclusive_options": []
+        }
+        "label": "Query methodology for database 3",
+        "select_choices_or_calculations": "Manual extraction
+        Digital extraction through query interface
+        Digital extraction through honest broker (with and/or without shared SQL/data extraction scripts)
+        Not Applicable/Unclear due to not stating query method",
+        "skip_logic": "[query_method_stated] = '1'"
+    },
+    {
+        "field_id": "query_script_loc_db_3",
+        "category": "database_and_data_collection",
+        "field_type": {
+            "inclusive_options": []
+        }
+        "label": "In which of the following does the researcher share a query script for Database 3:",
+        "select_choices_or_calculations": "Affiliated Research Center Website
+        Author's Institution or Departmental Website
+ Data Registry
+ Journal or Publication's Website
+        GitHub
+        Dataset Metadata
+        Readme file
+        Supplementary Materials
+        Appendix
+        Body of Text
+        Not Stated",
+        "skip_logic": "[query_script_shared] = '1'"
+    },
+    {
+        "field_id": "query_format_db_3",
+        "category": "database_and_data_collection",
+        "field_type": "text",
+        "label": "In what format are query documentation files shared for database 3?",
+        "field_note": "Typical query documentation files may include SQL scripts, R/Python extraction code, text files, etc. Please enter all that apply separated by a semi-colon",
+        "skip_logic": "[query_script_shared] = '1'"
+    },
+    {
+        "field_id": "query_script_comments_3",
+        "category": "database_and_data_collection",
+        "field_type": "binary",
+        "label": "Does the shared query script for database 3 contain comments and/or notations for ease of reproducibility?",
+        "skip_logic": "[query_script_shared] = '1'"
+    },
+    {
+        "field_id": "query_doc_open_db_3",
+        "category": "database_and_data_collection",
+        "field_type": {
+            "exclusive_options": []
+        }
+        "label": "Are query resources used throughout data collection proprietary or non-proprietary for database 3?",
+        "select_choices_or_calculations": "Proprietary
+        Non-Proprietary",
+        "skip_logic": "[query_script_shared] = '1'"
+    },
+    {
+        "field_id": "db_metadata_3",
+        "category": "database_and_data_collection",
+        "field_type": "binary",
+        "label": "Does the author share the dataset metadata for database 3?",
+        "field_note": "Metadata may be in the form of 'readme' text file or an XML document. Which should include information about data extraction techniques, rights, etc.",
+        "skip_logic": "[state_data_sources] = '1'"
+    },
+    {
+        "field_id": "db_3_restriction",
+        "category": "database_and_data_collection",
+        "field_type": {
+            "exclusive_options": []
+        }
+        "label": "Level of restriction for access to database 3",
+        "select_choices_or_calculations": "Closed
+        Restricted departmental database
+        Restricted access to only those within author's institution or clinical practice
+ Restricted access requiring data request and IRB
+ Restricted access requiring data request
+ Open to public
+ Not Stated",
+        "skip_logic": "[state_data_sources] = '1'"
+    },
+    {
+        "field_id": "db_charge_3",
+        "category": "database_and_data_collection",
+        "field_type": {
+            "exclusive_options": []
+        }
+        "label": "Must one pay for access to database 3?",
+        "select_choices_or_calculations": "No
+ Yes
+ Not Applicable",
+        "skip_logic": "[state_data_sources] = '1'"
+    },
+    {
+        "field_id": "db_citation_4",
+        "category": "database_and_data_collection",
+        "field_type": "notes",
+        "label": "Database Name 4",
+        "skip_logic": "[state_data_sources] = '1'"
+    },
+    {
+        "field_id": "db_doi_4",
+        "category": "database_and_data_collection",
+        "field_type": "text",
+        "label": "Database 4 DOI",
+        "skip_logic": "[state_data_sources] = '1'"
+    },
+    {
+        "field_id": "query_method_4",
+        "category": "database_and_data_collection",
+        "field_type": {
+            "inclusive_options": []
+        }
+        "label": "Query methodology for database 4",
+        "select_choices_or_calculations": "Manual extraction
+ Digital extraction through query interface
+ Digital extraction through honest broker (with and/or without shared SQL/data extraction scripts)
+ Not Applicable/Unclear due to not stating query method",
+        "skip_logic": "[query_method_stated] = '1'"
+    },
+    {
+        "field_id": "query_script_loc_db_4",
+        "category": "database_and_data_collection",
+        "field_type": {
+            "inclusive_options": []
+        }
+        "label": "In which of the following does the researcher share a query script for Database 4:",
+        "select_choices_or_calculations": "Affiliated Research Center Website
+ Author's Institution or Departmental Website
+        Data Registry
+        Journal or Publication's Website
+ GitHub
+ Dataset Metadata
+ Readme file
+ Supplementary Materials
+ Appendix
+ Body of Text
+ Not Stated",
+        "skip_logic": "[query_script_shared] = '1'"
+    },
+    {
+        "field_id": "query_format_db_4",
+        "category": "database_and_data_collection",
+        "field_type": "text",
+        "label": "In what format are query documentation files shared for database 4?",
+        "field_note": "Typical query documentation files may include SQL scripts, R/Python extraction code, text files, etc. Please enter all that apply separated by a semi-colon",
+        "skip_logic": "[query_script_shared] = '1'"
+    },
+    {
+        "field_id": "query_script_comments_4",
+        "category": "database_and_data_collection",
+        "field_type": "binary",
+        "label": "Does the shared query script for database 4 contain comments and/or notations for ease of reproducibility?",
+        "skip_logic": "[query_script_shared] = '1'"
+    },
+    {
+        "field_id": "query_doc_open_db_4",
+        "category": "database_and_data_collection",
+        "field_type": {
+            "exclusive_options": []
+        }
+        "label": "Are query resources used throughout data collection proprietary or non-proprietary for database 4?",
+        "select_choices_or_calculations": "Proprietary
+ Non-Proprietary",
+        "skip_logic": "[query_script_shared] = '1'"
+    },
+    {
+        "field_id": "db_metadata_4",
+        "category": "database_and_data_collection",
+        "field_type": "binary",
+        "label": "Does the author share the dataset metadata for database 4?",
+        "field_note": "Metadata may be in the form of 'readme' text file or an XML document. Which should include information about data extraction techniques, rights, etc.",
+        "skip_logic": "[state_data_sources] = '1'"
+    },
+    {
+        "field_id": "db_4_restriction",
+        "category": "database_and_data_collection",
+        "field_type": {
+            "exclusive_options": []
+        }
+        "label": "Level of restriction for database 4",
+        "select_choices_or_calculations": "Closed
+ Restricted departmental database
+ Restricted access to only those within author's institution or clinical practice
+        Restricted access requiring data request and IRB 5,Restricted access requiring data request
+        Open to public
+        Not Stated",
+        "skip_logic": "[state_data_sources] = '1'"
+    },
+    {
+        "field_id": "db_charge_4",
+        "category": "database_and_data_collection",
+        "field_type": {
+            "exclusive_options": []
+        }
+        "label": "Must one pay for access to database 4?",
+        "select_choices_or_calculations": "No
+        Yes
+        Not Applicable",
+        "skip_logic": "[query_script_shared] = '1'"
+    },
+    {
+        "field_id": "query_missing_reason",
+        "category": "database_and_data_collection",
+        "field_type": "binary",
+        "label": "Does the researcher state a reason for not sharing a query script?",
+        "skip_logic": "[query_script_shared] = '0'"
+    },
+    {
+        "field_id": "reason_no_query_share",
+        "category": "database_and_data_collection",
+        "field_type": "notes",
+        "label": "Please briefly explain the author's reasoning for not sharing a query script.",
+        "skip_logic": "[query_missing_reason] = '1'"
+    },
+    {
+        "field_id": "databases_missing_script",
+        "category": "database_and_data_collection",
+        "field_type": "dropdown",
+        "label": "For how many databases does the researcher fail to share a query script?",
+        "select_choices_or_calculations": "1
+ 2
+ 3
+ 4
+ 5
+ >5",
+        "skip_logic": "[query_script_shared] = '0'"
+    },
+    {
+        "field_id": "inclusion_and_exclusion_stated",
+        "category": "database_and_data_collection",
+        "field_type": "binary",
+        "label": "Does the publication or shared query material(s) state cohort inclusion and exclusion criteria?"
+    },
+    {
+        "field_id": "inclusion_exclu_location",
+        "category": "database_and_data_collection",
+        "field_type": {
+            "inclusive_options": []
+        }
+        "label": "States cohort inclusion and exclusion criteria in the following location:",
+        "select_choices_or_calculations": "Supplementary materials
+ Appendix
+ Body of text
+ Query script code or comments",
+        "skip_logic": "[inclusion_and_exclusion_stated] = '1'"
+    },
+    {
+        "field_id": "ontol_and_vocab_stated",
+        "category": "database_and_data_collection",
+        "field_type": "binary",
+        "label": "Are inclusion and exclusion criteria operationalized using standard ontologies and vocabularies?",
+        "skip_logic": "[inclusion_and_exclusion_stated] = '1'"
+    },
+    {
+        "field_id": "ontologies_vocab_location",
+        "category": "database_and_data_collection",
+        "field_type": {
+            "inclusive_options": []
+        }
+        "label": "States standard ontologies and vocabularies in the following location:",
+        "select_choices_or_calculations": "Supplementary materials
+ Appendix
+ Body of text
+ Query script code or comments",
+        "skip_logic": "[ontol_and_vocab_stated] = '1'"
+    },
+    {
+        "field_id": "proc_vocabulary",
+        "category": "database_and_data_collection",
+        "field_type": {
+            "inclusive_options": []
+        }
+        "label": "Procedure vocabulary adopted:",
+        "select_choices_or_calculations": "CPT
+ ICD
+ SNOMED
+ Other",
+        "skip_logic": "[ontol_and_vocab_stated] = '1'"
+    },
+    {
+        "field_id": "other_proc_vocab",
+        "category": "database_and_data_collection",
+        "field_type": "text",
+        "label": "Other procedure vocabulary adopted",
+        "skip_logic": "[proc_vocabulary(4)] = '1'"
+    },
+    {
+        "field_id": "diag_vocabulary",
+        "category": "database_and_data_collection",
+        "field_type": {
+            "inclusive_options": []
+        }
+        "label": "Diagnosis vocabulary adopted:",
+        "select_choices_or_calculations": "ICD9
+ ICD10
+ DSM
+ SNOMED
+ Other",
+        "skip_logic": "[ontol_and_vocab_stated] = '1'"
+    },
+    {
+        "field_id": "other_diagnosis_vocab",
+        "category": "database_and_data_collection",
+        "field_type": "text",
+        "label": "Other diagnosis vocabulary adopted:",
+        "skip_logic": "[diag_vocabulary(5)] = '1'"
+    },
+    {
+        "field_id": "med_vocab",
+        "category": "database_and_data_collection",
+        "field_type": {
+            "inclusive_options": []
+        }
+        "label": "Medication vocabulary adopted",
+        "select_choices_or_calculations": "SNOMED
+ RXNorm
+ Other",
+        "skip_logic": "[ontol_and_vocab_stated] = '1'"
+    },
+    {
+        "field_id": "other_med_vocab",
+        "category": "database_and_data_collection",
+        "field_type": "text",
+        "label": "Other medication vocabulary adopted:",
+        "skip_logic": "[med_vocab(3)] = '1'"
+    },
+    {
+        "field_id": "lab_vocab",
+        "category": "database_and_data_collection",
+        "field_type": {
+            "inclusive_options": []
+        }
+        "label": "Laboratory vocabulary adopted:",
+        "select_choices_or_calculations": "LOINC
+ Other",
+        "skip_logic": "[ontol_and_vocab_stated] = '1'"
+    },
+    {
+        "field_id": "other_lab_vocab",
+        "category": "database_and_data_collection",
+        "field_type": "text",
+        "label": "Other laboratory vocabulary",
+        "skip_logic": "[lab_vocab(2)] = '1'"
+    },
+    {
+        "field_id": "text_nlp_yn",
+        "category": "methods_data_mining_and_cleaning",
+        "field_type": "binary",
+        "label": "Does the research involve natural language processing or text mining?"
+    },
+    {
+        "field_id": "text_mine_source",
+        "category": "methods_data_mining_and_cleaning",
+        "field_type": "binary",
+        "label": "Does the manuscript state the source of the text from which data was mined?",
+        "field_note": "e.g., emergency department summaries, operative notes, and etc.",
+        "skip_logic": "[text_nlp_yn] = '1'"
+    },
+    {
+        "field_id": "text_mining_preprocess",
+        "category": "methods_data_mining_and_cleaning",
+        "field_type": "binary",
+        "label": "Is a version of the original pre-processing sample text source shared?",
+        "skip_logic": "[text_nlp_yn] = '1'"
+    },
+    {
+        "field_id": "nlp_source_shared_loc",
+        "category": "methods_data_mining_and_cleaning",
+        "field_type": {
+            "inclusive_options": []
+        }
+        "label": "In which of the following is the source text shared?",
+        "select_choices_or_calculations": "Not Applicable
+ Affiliated Research Center Website
+ Author's Institution or Departmental Website
+        Data Registry
+        Journal or Publication's Website
+ GitHub
+ Dataset Metadata
+ Readme file
+ Supplementary Materials
+ Appendix
+ Body of Text",
+        "skip_logic": "[text_nlp_yn] = '1' and ([text_mine_source] = '1' or [text_mining_preprocess] = '1' or [text_nlp_yn] = '1')"
+    },
+    {
+        "field_id": "nlp_validation",
+        "category": "methods_data_mining_and_cleaning",
+        "field_type": "binary",
+        "label": "Does the publication clearly state a processes for validating data mined via nlp and/or queried from a database?"
+    },
+    {
+        "field_id": "nlp_software",
+        "category": "methods_data_mining_and_cleaning",
+        "field_type": "text",
+        "label": "Please list all software applications used for text mining:",
+        "field_note": "Please enter all that apply separated by a semi-colon",
+        "skip_logic": "[text_nlp_yn] = '1'"
+    },
+    {
+        "field_id": "nlp_software_open",
+        "category": "methods_data_mining_and_cleaning",
+        "field_type": {
+            "inclusive_options": []
+        }
+        "label": "Is the text mining software application proprietary or open?",
+        "select_choices_or_calculations": "Proprietary
+ Open
+ Mixed",
+        "field_note": "If multiple applications were used, please select all options that apply.",
+        "skip_logic": "[text_nlp_yn] = '1'"
+    },
+    {
+        "field_id": "nlp_interoperable",
+        "category": "methods_data_mining_and_cleaning",
+        "field_type": "binary",
+        "label": "Are the text mining materials shared in a format interoperable with systems other than the author's chosen software application?",
+        "skip_logic": "[text_nlp_yn] = '1'"
+    },
+    {
+        "field_id": "nlp_file_formats",
+        "category": "methods_data_mining_and_cleaning",
+        "field_type": "text",
+        "label": "In what format are text mining files shared?",
+        "field_note": "Please enter all that apply separated by a semi-colon",
+        "skip_logic": "[text_nlp_yn] = '1'"
+    },
+    {
+        "field_id": "data_cleaned_yn",
+        "category": "methods_data_mining_and_cleaning",
+        "field_type": "binary",
+        "label": "Does the author state how data were cleaned?"
+    },
+    {
+        "field_id": "data_clean_docu_loc",
+        "category": "methods_data_mining_and_cleaning",
+        "field_type": {
+            "inclusive_options": []
+        }
+        "label": "In which of the following does the author describe any data cleaning procedures?",
+        "select_choices_or_calculations": "Dataset Metadata
+        Supplementary Materials
+        Appendix
+        Body of Text",
+        "skip_logic": "[data_cleaned_yn] = '1'"
+    },
+    {
+        "field_id": "data_merged_yn",
+        "category": "methods_data_mining_and_cleaning",
+        "field_type": "binary",
+        "label": "Does the author state how data were merged?"
+    },
+    {
+        "field_id": "data_merge_docu_loc",
+        "category": "methods_data_mining_and_cleaning",
+        "field_type": {
+            "inclusive_options": []
+        }
+        "label": "In which of the following does the author describe any data merging procedures?",
+        "select_choices_or_calculations": "Dataset Metadata
+        Supplementary Materials
+        Appendix
+        Body of Text",
+        "skip_logic": "[data_merged_yn] = '1'"
+    },
+    {
+        "field_id": "data_merge_id",
+        "category": "methods_data_mining_and_cleaning",
+        "field_type": "binary",
+        "label": "Does the author state the use of a patient primary identifier used throughout merging besides FN, LN, DOB?"
+    },
+    {
+        "field_id": "messy_variables_process",
+        "category": "methods_data_mining_and_cleaning",
+        "field_type": "binary",
+        "label": "Does the author state any clear process documented for cleaning messy or ambiguous records?",
+        "field_note": "Electronic medical records can often be suceptible to inaccurate data entry or falsely codified observations. If the authors state any such issues throughout their use of the data, did they also state a method for cleaning or dropping records?"
+    },
+    {
+        "field_id": "data_messy_docu_loc",
+        "category": "methods_data_mining_and_cleaning",
+        "field_type": {
+            "inclusive_options": []
+        }
+        "label": "In which of the following does the author describe any procedures for accounting for messy or ambiguous data?",
+        "select_choices_or_calculations": "Dataset Metadata
+        Supplementary Materials
+        Appendix
+        Body of Text",
+        "skip_logic": "[messy_variables_process] = '1'"
+    },
+    {
+        "field_id": "missing_variables_process",
+        "category": "methods_data_mining_and_cleaning",
+        "field_type": "binary",
+        "label": "Does the author state any clear process documented for accounting for missing data?",
+        "field_note": "Electronic medical records can often susceptible to missing data requiring data imputations or cleaning during analysis. If the authors state any such issues throughout their use of the data, did they also state a method for accounting for this missing data to limit analysis biases?"
+    },
+    {
+        "field_id": "data_missing_docu_loc",
+        "category": "methods_data_mining_and_cleaning",
+        "field_type": {
+            "inclusive_options": []
+        }
+        "label": "In which of the following does the author describe any procedures for accounting for missing data?",
+        "select_choices_or_calculations": "Dataset Metadata
+        Supplementary Materials
+        Appendix
+        Body of Text",
+        "skip_logic": "[missing_variables_process] = '1'"
+    },
+    {
+        "field_id": "analysis_code_shared",
+        "category": "methods_data_analysis",
+        "field_type": "binary",
+        "label": "Does the author share all code sufficient for data analysis?"
+    },
+    {
+        "field_id": "results_verifiable",
+        "category": "methods_data_analysis",
+        "field_type": "dropdown",
+        "label": "Are all results listed within the manuscript's results section verifiable via the shared analysis scripts?",
+        "select_choices_or_calculations": "No
+ Yes
+ NA",
+        "skip_logic": "[analysis_code_shared] = '1'"
+    },
+    {
+        "field_id": "results_linked_to_code",
+        "category": "methods_data_analysis",
+        "field_type": "binary",
+        "label": "Are all results listed within the manuscript's results section linked to commented and index sections of code?",
+        "skip_logic": "[analysis_code_shared] = '1'"
+    },
+    {
+        "field_id": "analysis_script_commented",
+        "category": "methods_data_analysis",
+        "field_type": "binary",
+        "label": "Does the shared analysis code contain comments and/or notation for ease of reproducibility?",
+        "skip_logic": "[analysis_code_shared] = '1'"
+    },
+    {
+        "field_id": "analysis_processes_clear",
+        "category": "methods_data_analysis",
+        "field_type": "binary",
+        "label": "Does the author state analysis methodology and process?"
+    },
+    {
+        "field_id": "data_analysis_doc_loc",
+        "category": "methods_data_analysis",
+        "field_type": {
+            "inclusive_options": []
+        }
+        "label": "In which of the following does the author describe any data analysis procedures?",
+        "select_choices_or_calculations": "Dataset Metadata
+        Supplementary Materials
+        Appendix
+        Body of Text",
+        "skip_logic": "[analysis_processes_clear] = '1'"
+    },
+    {
+        "field_id": "software_analysis_code",
+        "category": "methods_data_analysis",
+        "field_type": "binary",
+        "label": "Does the author indicate the software used to develop the analysis code?"
+    },
+    {
+        "field_id": "analysis_sw",
+        "category": "methods_data_analysis",
+        "field_type": "text",
+        "label": "Software used for data analysis",
+        "field_note": "Please enter all that apply separated by a semi-colon",
+        "skip_logic": "[software_analysis_code] = '1'"
+    },
+    {
+        "field_id": "analysis_sw_version",
+        "category": "methods_data_analysis",
+        "field_type": "text",
+        "label": "Analysis software version number",
+        "skip_logic": "[software_analysis_code] = '1'"
+    },
+    {
+        "field_id": "analysis_os",
+        "category": "methods_data_analysis",
+        "field_type": "text",
+        "label": "Analysis software operating system",
+        "skip_logic": "[software_analysis_code] = '1'"
+    },
+    {
+        "field_id": "analysis_software_open",
+        "category": "methods_data_analysis",
+        "field_type": {
+            "inclusive_options": []
+        }
+        "label": "Is the analysis software proprietary or open?",
+        "select_choices_or_calculations": "Proprietary
+        Open",
+        "skip_logic": "[software_analysis_code] = '1'"
+    },
+    {
+        "field_id": "analysis_file_formats",
+        "category": "methods_data_analysis",
+        "field_type": "text",
+        "label": "Analysis file formats shared",
+        "field_note": "Please enter all that apply separated by a semi-colon"
+    },
+    {
+        "field_id": "analysis_code_shared_loc",
+        "category": "methods_data_analysis",
+        "field_type": {
+            "inclusive_options": []
+        }
+        "label": "Where is the finalized data analysis code shared?",
+        "select_choices_or_calculations": "Affiliated Research Center Website
+        Author's Institution or Departmental Website
+ Data Registry
+ Journal or Publication's Website
+        GitHub
+        Dataset Metadata
+        Readme file
+        Supplementary Materials
+        Appendix
+        Body of Text
+        Not stated"
+    },
+    {
+        "field_id": "analysis_request_restrict",
+        "category": "methods_data_analysis",
+        "field_type": {
+            "inclusive_options": []
+        }
+        "label": "What is the level of restriction for requesting the data analysis script?",
+        "select_choices_or_calculations": "Closed
+        Restricted departmental database
+        Restricted to within author's institution or practice
+ Restricted access requiring data request and IRB
+ Restricted access requiring data request
+ Open to public"
+    },
+    {
+        "field_id": "final_dataset_shared",
+        "category": "data_sharing_and_data_documentation",
+        "field_type": "binary",
+        "label": "Is the finalized dataset shared?"
+    },
+    {
+        "field_id": "final_dataset_shared_loc",
+        "category": "data_sharing_and_data_documentation",
+        "field_type": {
+            "inclusive_options": []
+        }
+        "label": "Where is the finalized dataset shared?",
+        "select_choices_or_calculations": "Affiliated Research Center Website
+ Author's Institution or Departmental Website
+        Data Registry
+        Journal or Publication's Website
+ GitHub
+ Other",
+        "skip_logic": "[final_dataset_shared] = '1'"
+    },
+    {
+        "field_id": "other_data_share",
+        "category": "data_sharing_and_data_documentation",
+        "field_type": "text",
+        "label": "If Other, where?",
+        "skip_logic": "[final_dataset_shared_loc(6)] = '1'"
+    },
+    {
+        "field_id": "data_requesting_process",
+        "category": "data_sharing_and_data_documentation",
+        "field_type": "binary",
+        "label": "Is there a clear process for requesting the data?"
+    },
+    {
+        "field_id": "data_req_doc_loc",
+        "category": "data_sharing_and_data_documentation",
+        "field_type": {
+            "inclusive_options": []
+        }
+        "label": "Which of the following specifies a data request process?",
+        "select_choices_or_calculations": "Affiliated Research Center Website
+ Author's Institution or Departmental Website
+        Data Registry
+        Journal or Publication's Website
+ Supplementary Materials
+ Appendix
+ Body of text
+ Other",
+        "skip_logic": "[data_requesting_process] = '1'"
+    },
+    {
+        "field_id": "data_req_doc_loc_other",
+        "category": "data_sharing_and_data_documentation",
+        "field_type": "text",
+        "label": "If Other, where?",
+        "skip_logic": "[data_req_doc_loc(8)] = '1'"
+    },
+    {
+        "field_id": "journal_datasharing_policy",
+        "category": "data_sharing_and_data_documentation",
+        "field_type": {
+            "exclusive_options": []
+        }
+        "label": "Does the journal of publication have a data sharing policy?",
+        "select_choices_or_calculations": "Yes
+ No
+ Unclear"
+    },
+    {
+        "field_id": "share_policy_url",
+        "category": "data_sharing_and_data_documentation",
+        "field_type": "text",
+        "label": "If yes, please input the data sharing url:",
+        "skip_logic": "[journal_datasharing_policy] = '1' or [journal_datasharing_policy] = '888'"
+    },
+    {
+        "field_id": "data_req_access",
+        "category": "data_sharing_and_data_documentation",
+        "field_type": {
+            "exclusive_options": []
+        }
+        "label": "What is the level of restriction for requesting the data?",
+        "select_choices_or_calculations": "Closed
+ Restricted departmental database
+ Restricted to within author's institution or practice
+        Restricted access requiring data request and IRB
+        Restricted access requiring data request
+        Open to public
+        Other
+        Unclear"
+    },
+    {
+        "field_id": "data_req_access_other",
+        "category": "data_sharing_and_data_documentation",
+        "field_type": "text",
+        "label": "If other, please indicate level of restriction for requesting the data",
+        "skip_logic": "[data_req_access] = '7'"
+    },
+    {
+        "field_id": "data_req_charge",
+        "category": "data_sharing_and_data_documentation",
+        "field_type": "dropdown",
+        "label": "Is there a charge associated with requesting the data?",
+        "select_choices_or_calculations": "Yes
+        No
+        Not stated
+        Unclear",
+    },
+    {
+        "field_id": "readme_file_shared",
+        "category": "data_sharing_and_data_documentation",
+        "field_type": "binary",
+        "label": "Does the author share a readme file with each dataset?"
+    },
+    {
+        "field_id": "rm_clear_contents",
+        "category": "data_sharing_and_data_documentation",
+        "field_type": "binary",
+        "label": "Does the readme file contain clear documentation of dataset contents and related metadata?",
+        "skip_logic": "[readme_file_shared] = '1'"
+    },
+    {
+        "field_id": "rm_metadata_standard",
+        "category": "data_sharing_and_data_documentation",
+        "field_type": "binary",
+        "label": "Does the author indicate an existing metadata standard they are applying within their metadata?",
+        "skip_logic": "[readme_file_shared] = '1'"
+    },
+    {
+        "field_id": "rm_filing_naming_convention",
+        "category": "data_sharing_and_data_documentation",
+        "field_type": "binary",
+        "label": "Does the author document any form of adopted file naming convention?",
+        "skip_logic": "[readme_file_shared] = '1'"
+    },
+    {
+        "field_id": "rm_index",
+        "category": "data_sharing_and_data_documentation",
+        "field_type": "binary",
+        "label": "Are contents within the readme file organized through some form of index?",
+        "skip_logic": "[readme_file_shared] = '1'"
+    },
+    {
+        "field_id": "rm_inventory",
+        "category": "data_sharing_and_data_documentation",
+        "field_type": "binary",
+        "label": "Does the readme file contain an inventory of research data contents?",
+        "skip_logic": "[readme_file_shared] = '1'"
+    },
+    {
+        "field_id": "rm_license_rights",
+        "category": "data_sharing_and_data_documentation",
+        "field_type": "binary",
+        "label": "Does the readme file document any associated licenses or rights of reuse for the associated research data and materials?",
+        "skip_logic": "[readme_file_shared] = '1'"
+    },
+    {
+        "field_id": "rm_abstract_proj_descr",
+        "category": "data_sharing_and_data_documentation",
+        "field_type": "binary",
+        "label": "Does the readme file contain a project abstract or project description?",
+        "skip_logic": "[readme_file_shared] = '1'"
+    },
+    {
+        "field_id": "rm_creation_dates",
+        "category": "data_sharing_and_data_documentation",
+        "field_type": "binary",
+        "label": "Does the readme file state creation dates for all referenced files and datasets?",
+        "skip_logic": "[readme_file_shared] = '1'"
+    },
+    {
+        "field_id": "rm_ref_pub_supplementary",
+        "category": "data_sharing_and_data_documentation",
+        "field_type": "binary",
+        "label": "Does the readme file reference related publications or supplementary materials?",
+        "skip_logic": "[readme_file_shared] = '1'"
+    },
+    {
+        "field_id": "rm_operating_systems",
+        "category": "data_sharing_and_data_documentation",
+        "field_type": "binary",
+        "label": "Does the readme file explain the relevant operating systems used throughout the creation of inventoried files?",
+        "skip_logic": "[readme_file_shared] = '1'"
+    },
+    {
+        "field_id": "rm_sw_version_numbers",
+        "category": "data_sharing_and_data_documentation",
+        "field_type": "binary",
+        "label": "Does the readme file document the relevant software version numbers adopted throughout the research process?",
+        "skip_logic": "[readme_file_shared] = '1'"
+    },
+    {
+        "field_id": "rm_limitations",
+        "category": "data_sharing_and_data_documentation",
+        "field_type": "binary",
+        "label": "Does the readme file document limitations associated with the associated research methods or shared data?",
+        "skip_logic": "[readme_file_shared] = '1'"
+    },
+    {
+        "field_id": "limitations_where",
+        "category": "data_sharing_and_data_documentation",
+        "field_type": {
+            "inclusive_options": []
+        }
+        "label": "In which of the following locations are project or data limitations documented?",
+        "select_choices_or_calculations": "Affiliated Research Center Website
+        Author's Institution or Departmental Website
+ Data Registry
+ Journal or Publication's Website
+        Supplementary Materials
+        Appendix
+        Body of Text
+        Other"
+    },
+    {
+        "field_id": "data_dictionary_shared",
+        "category": "data_sharing_and_data_documentation",
+        "field_type": "binary",
+        "label": "Does the author share a data dictionary for all datasets?"
+    },
+    {
+        "field_id": "data_dictionary_location",
+        "category": "data_sharing_and_data_documentation",
+        "field_type": {
+            "inclusive_options": []
+        }
+        "label": "In which of the following locations is the data dictionary shared?",
+        "select_choices_or_calculations": "Affiliated Research Center Website
+        Author's Institution or Departmental Website
+ Data Registry
+ Journal or Publication's Website
+        GitHub
+        Dataset Metadata
+        Readme file
+        Supplementary Materials
+        Appendix
+        Body of Text
+        Other",
+        "skip_logic": "[data_dictionary_shared] = '1'"
+    },
+    {
+        "field_id": "dd_variables_intelligble",
+        "category": "data_sharing_and_data_documentation",
+        "field_type": "binary",
+        "label": "Are all variables clearly intelligible to those within the clinical domain?",
+        "skip_logic": "[final_dataset_shared] = '1' or [readme_file_shared] = '1' or [data_dictionary_shared] = '1'"
+    },
+    {
+        "field_id": "dd_abbreviations_limited",
+        "category": "data_sharing_and_data_documentation",
+        "field_type": "binary",
+        "label": "Is the use of abbreviations within the data dictionary and associated data documentation limited?",
+        "skip_logic": "[data_dictionary_shared] = '1' or [readme_file_shared] = '1' or [final_dataset_shared] = '1'"
+    },
+    {
+        "field_id": "dd_abbreviations_defined",
+        "category": "data_sharing_and_data_documentation",
+        "field_type": "binary",
+        "label": "Are all abbreviations spelled out and defined in metadata?",
+        "skip_logic": "[final_dataset_shared] = '1' or [readme_file_shared] = '1' or [data_dictionary_shared] = '1'"
+    },
+    {
+        "field_id": "dd_truncated_variables",
+        "category": "data_sharing_and_data_documentation",
+        "field_type": "binary",
+        "label": "Are truncated variable titles spelled out in full within the data dictionary?",
+        "skip_logic": "[data_dictionary_shared] = '1' or [readme_file_shared] = '1'"
+    },
+    {
+        "field_id": "dd_coded_var_labels",
+        "category": "data_sharing_and_data_documentation",
+        "field_type": "binary",
+        "label": "Are all coded variable labels assigned clear definitions?",
+        "skip_logic": "[data_dictionary_shared] = '1' or [readme_file_shared] = '1'"
+    },
+    {
+        "field_id": "central_data_request",
+        "category": "data_sharing_and_data_documentation",
+        "field_type": "binary",
+        "label": "Are all datasets and data documentation files available through the same centralized request mechanism(s)?",
+        "skip_logic": "[final_dataset_shared] = '1' or [readme_file_shared] = '1' or [data_dictionary_shared] = '1'"
+    },
+    {
+        "field_id": "data_assigned_obj_identifiers",
+        "category": "data_sharing_and_data_documentation",
+        "field_type": "binary",
+        "label": "Are all data materials given a unique identifier?",
+        "skip_logic": "[final_dataset_shared] = '1' or [readme_file_shared] = '1' or [data_dictionary_shared] = '1'"
+    },
+    {
+        "field_id": "data_discoverability_tags",
+        "category": "data_sharing_and_data_documentation",
+        "field_type": "binary",
+        "label": "Are all data materials given tags to aid in discoverability?",
+        "skip_logic": "[final_dataset_shared] = '1' or [readme_file_shared] = '1' or [data_dictionary_shared] = '1'"
+    }
+]

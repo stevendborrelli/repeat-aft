@@ -21,6 +21,7 @@ in with pinned_pkgs; stdenv.mkDerivation {
   buildInputs = [
     python3
     python3Packages.sphinx
+    python3Packages.jsonschema
   ];
 
   meta = with stdenv.lib; {

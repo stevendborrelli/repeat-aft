@@ -1,0 +1,352 @@
+[
+    {
+        "field_id": "record_id",
+        "category": "publication_overview_and_bibliographic_information",
+        "field_type": "text",
+        "label": "Record ID"
+    },
+    {
+        "field_id": "article_doi",
+        "category": "publication_overview_and_bibliographic_information",
+        "field_type": "text",
+        "label": "Article DOI"
+    },
+    {
+        "field_id": "journal_publication",
+        "category": "publication_overview_and_bibliographic_information",
+        "field_type": "text",
+        "label": "Journal of Publication"
+    },
+    {
+        "field_id": "publication_date",
+        "category": "publication_overview_and_bibliographic_information",
+        "field_type": "text",
+        "label": "Publication Date",
+        "note": "MM/DD/YYYY",
+        "validation_type": ["date"]
+    },
+    {
+        "field_id": "publication_issue",
+        "category": "publication_overview_and_bibliographic_information",
+        "field_type": "text",
+        "label": "Is the publication submitted as part of a special issue or editorial? If yes, please list the issue title."
+    },
+    {
+        "field_id": "author_fn",
+        "category": "publication_overview_and_bibliographic_information",
+        "field_type": "text",
+        "label": "Corresponding Author First Name",
+        "validation_type": ["alpha_only"],
+        "identifier": true
+    },
+    {
+        "field_id": "author_ln",
+        "category": "publication_overview_and_bibliographic_information",
+        "field_type": "text",
+        "label": "Corresponding Author Last Name",
+        "validation_type": ["alpha_only"],
+        "identifier": true
+    },
+    {
+        "field_id": "author_email",
+        "category": "publication_overview_and_bibliographic_information",
+        "field_type": "text",
+        "label": "Corresponding Author Email"
+    },
+    {
+        "field_id": "article_title",
+        "category": "publication_overview_and_bibliographic_information",
+        "field_type": "text",
+        "label": "Article Title"
+    },
+    {
+        "field_id": "institution_corr_author",
+        "category": "publication_overview_and_bibliographic_information",
+        "field_type": "text",
+        "label": "Institution of Corresponding Author",
+        "identifier": true
+    },
+    {
+        "field_id": "research_center",
+        "category": "publication_overview_and_bibliographic_information",
+        "field_type": "text",
+        "label": "Author's Affiliated Research Center"
+    },
+    {
+        "field_id": "clinical_domain",
+        "category": "publication_overview_and_bibliographic_information",
+        "label": "Clinical Domain Category",
+        "field_type": {
+            "exclusive_options": [
+                "Allergy/Immunology",
+                "Anatomy and NeuroBiology",
+                "Anesthesiology",
+                "Biochemistry & Molecular Biophysics",
+                "Biostatistics",
+                "Bone and Mineral",
+                "Cardiology",
+                "Cell Biology & Physiology",
+                "Dermatology",
+                "Developmental Biology",
+                "Endocrinology Gastroenterology",
+                "General Med Sciences",
+                "Genetics",
+                "Geriatrics & Nutrition",
+                "Health Behavior Research",
+                "Hematology",
+                "Hospital Medicine",
+                "Infectious Diseases",
+                "Internal Medicine",
+                "McDonnell Genome Institute",
+                "Medical Education Oncology",
+                "Molecular Microbiology",
+                "Neurology",
+                "Neuroscience",
+                "Neurosurgery",
+                "Obstetrics & Gynecology",
+                "Occupational Therapy",
+                "Ophthalmology and Visual Sciences",
+                "Orthopaedic Surgery",
+                "Otolaryngology",
+                "Pathology & Immunology",
+                "Pediatrics",
+                "Pharmacogenomics",
+                "Physical Therapy",
+                "Psychiatry",
+                "Pulmonary",
+                "Radiation Oncology",
+                "Radiology",
+                "Renal",
+                "Rheumatology",
+                "Surgery",
+                "Other"
+            ]
+        }
+    },
+    {
+        "field_id": "primary_research",
+        "category": "publication_overview_and_bibliographic_information",
+        "field_type": "binary",
+        "label": "Is the publication presenting primary research wherein new data is collected and/or secondary data is reused towards a new purpose?"
+    },
+    {
+        "field_id": "meta_analysis",
+        "category": "publication_overview_and_bibliographic_information",
+        "field_type": "binary",
+        "label": "Is the publication presenting a meta-analysis?"
+    },
+    {
+        "field_id": "reproducibilityresearch_yn",
+        "category": "publication_overview_and_bibliographic_information",
+        "field_type": "binary",
+        "label": "Is the publication presenting an attempt at reproducing research?"
+    },
+    {
+        "field_id": "hypothesis_gen_or_driv",
+        "category": "publication_overview_and_bibliographic_information",
+        "label": "Is the research hypothesis-driven or hypothesis-generating?",
+        "field_type": {
+            "exclusive_options": [
+                "Hypothesis Driven",
+                "Hypothesis Generating",
+                "Unclear"
+            ]
+        }
+    },
+    {
+        "field_id": "clear_hypothesis",
+        "category": "publication_overview_and_bibliographic_information",
+        "label": "Publication states null and alternative hypothesis?",
+        "field_type": {
+            "exclusive_options": [ "Yes", "No", "Unclear", "Not applicable" ]
+        }
+    },
+    {
+        "field_id": "reviewer",
+        "category": "publication_overview_and_bibliographic_information",
+        "label": "Reviewer name",
+        "field_type": {
+            "exclusive_options": [
+                "Leslie McIntosh",
+                "Anthony Juehne",
+                "Cynthia Hudson-Vitale",
+                "Sam Johnson",
+                "Xiaoyan Liu",
+                "Christian Lukas",
+                "Roberta Grannemann"
+            ]
+        }
+    },
+    {
+        "field_id": "funders",
+        "category": "publication_overview_and_bibliographic_information",
+        "field_type": "text",
+        "label": "Project funders",
+        "note": "Please list project funders separated by semi-colons"
+    },
+    {
+        "field_id": "grant_ids",
+        "category": "publication_overview_and_bibliographic_information",
+        "field_type": "text",
+        "label": "Grant identifiers",
+        "note": "If available, please list available grant IDs separated by semi-colons."
+    },
+    {
+        "field_id": "state_data_sources",
+        "category": "database_and_data_collection",
+        "field_type": "binary",
+        "label": "Publication states database(s) source(s) of data?"
+    },
+    {
+        "field_id": "state_database_where",
+        "category": "database_and_data_collection",
+        "note": "please select all that apply",
+        "skip_logic": {"field_id": "state_data_sources", "value": true },
+        "label": "Publication states database(s) source(s) of data in the following location:",
+        "field_type": {
+            "inclusive_options": [
+                "Appendix",
+                "Body of text",
+                "Not stated",
+                "Supplementary materials"
+            ]
+        }
+    },
+    {
+        "field_id": "database_cited",
+        "category": "database_and_data_collection",
+        "field_type": "binary",
+        "label": "Does the publication include database citation(s)?"
+    },
+    {
+        "field_id": "query_script_shared",
+        "category": "database_and_data_collection",
+        "field_type": "binary",
+        "label": "Does the researcher share a query script for databases used throughout the data collection workflow?"
+    },
+    {
+        "field_id": "query_method_stated",
+        "category": "database_and_data_collection",
+        "field_type": "binary",
+        "label": "Do the authors state the methods used for collecting data?",
+        "note": "e.g., manual extraction from clinical records, EMR query application, and/or data broker"
+    },
+    {
+        "field_id": "query_method_location",
+        "category": "database_and_data_collection",
+        "label": "States query methodology in the following location:",
+        "skip_logic": {"field_id": "query_method_stated", "value": true },
+        "field_type": {
+            "inclusive_options": [
+                "Appendix",
+                "Body of text",
+                "Supplementary materials (query script or metadata)"
+            ]
+        }
+    },
+    {
+        "field_id": "data_citations_instructions",
+        "category": "database_and_data_collection",
+        "field_type": "instructions",
+        "label": "In the boxes below, please enter the full name or citation for each applicable database listed within the publication. If less than four databases are cited, please complete sections for all applicable databases and leave the subsequent fields blank.",
+        "skip_logic": {"field_id": "state_data_sources", "value": true }
+    },
+    {
+        "field_id": "db_citation_1",
+        "category": "database_and_data_collection",
+        "field_type": "text",
+        "label": "Database Name 1",
+        "skip_logic": {"field_id": "state_data_sources", "value": true }
+    },
+    {
+        "field_id": "db_doi_1",
+        "category": "database_and_data_collection",
+        "field_type": "text",
+        "label": "Database 1 DOI",
+        "skip_logic": {"field_id": "state_data_sources", "value": true }
+    },
+    {
+        "field_id": "query_method_db_1",
+        "category": "database_and_data_collection",
+        "label": "Query methodology for Database 1",
+        "skip_logic": {"field_id": "query_method_stated", "value": true },
+        "field_type": {
+            "inclusive_options": [
+                "Digital extraction through honest broker (with and/or without shared SQL/data extraction scripts)",
+                "Digital extraction through query interface",
+                "Manual extraction",
+                "Not Applicable/Not Stated"
+            ]
+        }
+    },
+    {
+        "field_id": "query_script_loc_db_1",
+        "category": "database_and_data_collection",
+        "label": "In which of the following does the researcher share a query script for Database 1:",
+        "skip_logic": {"field_id": "query_script_shared", "value": true },
+        "field_type": {
+            "inclusive_options": [
+                "Affiliated Research Center Website",
+                "Appendix",
+                "Author's Institution or Departmental Website",
+                "Body of Text",
+                "Data Registry",
+                "Dataset Metadata",
+                "GitHub",
+                "Journal or Publication's Website",
+                "Not Stated",
+                "Readme file",
+                "Supplementary Materials"
+            ]
+        }
+    },
+    {
+        "field_id": "query_format_db_1",
+        "category": "database_and_data_collection",
+        "field_type": "text",
+        "label": "In what format are query documentation files shared for Database 1?",
+        "note": "Typical query documentation files may include SQL scripts, R/Python extraction code, text files, etc. Please enter all that apply separated by a semi-colon",
+        "skip_logic": {"field_id": "query_script_shared", "value": true }
+    },
+    {
+        "field_id": "query_script_comments_1",
+        "category": "database_and_data_collection",
+        "field_type": "binary",
+        "label": "Does the shared query script for database 1 contain comments and/or notations for ease of reproducibility?",
+        "skip_logic": {"field_id": "query_script_shared", "value": true }
+    },
+    {
+        "field_id": "query_doc_open_db_1",
+        "category": "database_and_data_collection",
+        "label": "Are query resources used throughout data collection proprietary or non-proprietary for database 1?",
+        "field_type": {
+            "exclusive_options": [ "Proprietary", "Non-proprietary" ]
+        },
+        "skip_logic": {"field_id": "query_script_shared", "value": true }
+    },
+    {
+        "field_id": "db_metadata_1",
+        "category": "database_and_data_collection",
+        "field_type": "binary",
+        "label": "Does the author share the dataset metadata for database 1?",
+        "note": "Metadata may be in the form of 'readme' text file or an XML document. Which should include information about data extraction techniques, rights, etc.",
+        "skip_logic": {"field_id": "state_data_sources", "value": true }
+    },
+    {
+        "field_id": "restriction_db_1",
+        "category": "database_and_data_collection",
+        "label": "Level of restriction for access to database 1",
+        "skip_logic": {"field_id": "state_data_sources", "value": true },
+        "field_type": {
+            "exclusive_options": [
+                "Closed",
+                "Not Stated",
+                "Open to public",
+                "Restricted access requiring data request and IRB",
+                "Restricted access requiring data request",
+                "Restricted access to only those within author's institution or clinical practice",
+                "Restricted departmental database"
+            ]
+        }
+    }
+]
