@@ -1,30 +1,37 @@
-{
-  pkgs ? import <nixpkgs> { }
-}:
+# -*- mode: nix -*-
+{ pkgs ? import ./nix/pinned-pkgs.nix { } }:
+# { lib, callPackage, python3Packages }:
 
-# To use: run `nix-shell` or `nix-shell --run "exec zsh"`
-# https://nixos.org/wiki/Development_Environments
-# http://nixos.org/nix/manual/#sec-nix-shell
-
-let
-  # Pin a nixpkgs version
-  pinned_pkgs = import (pkgs.fetchFromGitHub {
-    owner  = "NixOS";
-    repo   = "nixpkgs";
-    rev    = "17.03";
-    sha256 = "1fw9ryrz1qzbaxnjqqf91yxk1pb9hgci0z0pzw53f675almmv9q2";
-  }) {};
-
-in with pinned_pkgs; stdenv.mkDerivation {
+with pkgs; with python3Packages; buildPythonPackage {
   name = "repeat-aft";
   src = ./.;
-  buildInputs = [
-    python3
-    python3Packages.sphinx
-    python3Packages.jsonschema
+  propagatedBuildInputs = [
+    (callPackage ./nix/deps/django-polymorphic.nix {
+      buildPythonPackage = buildPythonPackage;
+      fetchPypi = fetchPypi;
+      django = django;
+    })
+    (callPackage ./nix/deps/coreapi.nix {
+      buildPythonPackage = buildPythonPackage;
+      fetchPypi = fetchPypi;
+      requests = requests;
+      uritemplate = uritemplate;
+
+      coreschema = callPackage ./nix/deps/coreschema.nix {
+        buildPythonPackage = buildPythonPackage;
+        fetchPypi = fetchPypi;
+        jinja2 = jinja2;
+      };
+      itypes = callPackage ./nix/deps/itypes.nix {
+        buildPythonPackage = buildPythonPackage;
+        fetchPypi = fetchPypi;
+      };
+    })
+    djangorestframework
+    # jsonschema
   ];
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     homepage = https://github.com/ripeta/repeat-aft;
     description = "";
     maintainers = with maintainers; [ siddharthist ];

@@ -1,4 +1,7 @@
 docs/_build/
+*.sqlite3
+migrations/
+*.uml
 
 # annoying osx files
 .DS_Store

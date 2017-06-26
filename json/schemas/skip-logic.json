@@ -1,0 +1,64 @@
+{
+    "$schema":"http://json-schema.org/draft-04/schema#",
+    "title": "Skip logic",
+    "description": "Describe under which circumstances a variable should be filled",
+    "id": "skip-logic.json",
+    "$ref": "#/definitions/skip_logic",
+    "definitions" : {
+        "skip_logic": {
+            "type": "object",
+            "oneOf": [
+                {
+                    "title": "atomic",
+                    "description": "An atomic Boolean statement, namely a reference to another variable/question",
+                    "properties": {
+                        "field_id": {
+                            "description": "The field_id of the referenced field",
+                            "type": "string",
+                            "minLength": 1
+                        },
+                        "value": {
+                            "description": "What does the value of that field have to be?"
+                        }
+                    },
+                    "additionalProperties": false,
+                    "required": [ "field_id", "value" ]
+                },
+                {
+                    "title": "not",
+                    "properties": { "not": { "$ref": "#/definitions/skip_logic" } },
+                    "additionalProperties": false,
+                    "required": [ "not" ]
+                },
+
+                {
+                    "title": "and",
+                    "properties": {
+                        "and": {
+                            "type": "array",
+                            "minItems": 2,
+                            "uniqueItems": true,
+                            "items": { "$ref": "#/definitions/skip_logic" }
+                        }
+                    },
+                    "additionalProperties": false,
+                    "required": [ "and" ]
+                },
+
+                {
+                    "title": "or",
+                    "properties": {
+                        "or": {
+                            "type": "array",
+                            "minItems": 2,
+                            "uniqueItems": true,
+                            "items": { "$ref": "#/definitions/skip_logic" }
+                        }
+                    },
+                    "additionalProperties": false,
+                    "required": [ "or" ]
+                }
+            ]
+        }
+    }
+}
