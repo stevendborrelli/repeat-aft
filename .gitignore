@@ -3,6 +3,9 @@ docs/_build/
 migrations/
 *.uml
 
+# nix-build files
+result
+
 # annoying osx files
 .DS_Store
 
