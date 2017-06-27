@@ -1,26 +1,57 @@
 #!/usr/bin/env bash
 set -e
 
-if [[ -z "$IN_NIX_SHELL" ]]; then
-  nix-shell --run "$0"
-  exit $?
-fi
+## SSH
+
+# Destroy the virtual machines
+function destroy {
+  if nixops info -d "$deployment_name" &> /dev/null; then
+    nixops destroy -d "$deployment_name" --confirm
+    nixops delete -d "$deployment_name"
+  fi
+}
+
+# Run some basic tests to see if some static files are present
+function curl_tests {
+  curl "$1:80" > /dev/null
+  curl "$1:80/static/admin/css/login.css" > /dev/null
+  curl "$1:80/static/rest_framework/css/default.css" > /dev/null
+}
+
+deployment_name="test_deployment"
+if [[ "$1" == ssh ]]; then
+  nixops ssh -d "$test_deployment" webserver; exit $?
+
+## Cleanup
+
+elif [[ "$1" == destroy ]]; then destroy; exit $? ; fi
+
+## Standard run
 
 echo ">>> Building documentation..."
-make -C ./docs html
+nix-shell --run 'make -C ./docs html'
 
 echo ">>> Running nix-build..."
 nix-build
 
 if [[ -z "$CI" ]]; then
-  deployment_name="test_deployment"
-   echo ">>> This is not a CI build, testing VM deployment"
-   nixops info -d "$deployment_name" &> /dev/null \
-    && nixops destroy -d "$deployment_name" --confirm \
-    && nixops delete -d "$deployment_name"
-   nixops create -d "$deployment_name" nix/ops/*
-   nixops deploy -d "$deployment_name" --show-trace
-   nixops ssh -d "$deployment_name" webserver "systemctl status repeat; systemctl start repeat; journalctl -u repeat"
+  echo ">>> This is not a CI build, testing VM deployment"
+  destroy
+  nixops create -d "$deployment_name" nix/ops/{logical.nix,vbox.nix}
+  nixops deploy -d "$deployment_name" --show-trace
+
+  # If the deployment failed, show logs
+  ip=$(nixops info -d "$deployment_name" --plain | awk '{print $5}')
+  nixops ssh -d "$deployment_name" webserver "systemctl start repeat"
+  sleep 1
+  if ! (curl_tests "$ip" > /dev/null); then
+    nixops ssh -d "$deployment_name" webserver "systemctl start repeat"
+  fi
+  if ! (curl_tests "$ip") > /dev/null; then
+    nixops ssh -d "$deployment_name" webserver "journalctl -u repeat"
+    exit 1
+  fi
+  echo "IP address: $ip"
 fi
 
 echo "Done!"
