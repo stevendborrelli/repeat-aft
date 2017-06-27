@@ -29,7 +29,7 @@ elif [[ "$1" == destroy ]]; then destroy; exit $? ; fi
 ## Standard run
 
 echo ">>> Building documentation..."
-nix-shell --run 'make -C ./docs html'
+nix-shell --no-build-output --run 'make -C ./docs html'
 
 echo ">>> Running nix-build..."
 nix-build
