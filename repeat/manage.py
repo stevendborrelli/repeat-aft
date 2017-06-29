@@ -1,4 +1,4 @@
-#!/nix/store/c6j3ky32czxaqy41i9xqm2qh1ys5kixv-python3-3.6.1/bin/python
+#!/usr/bin/env python3
 import os
 import sys
 

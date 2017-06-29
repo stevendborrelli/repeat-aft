@@ -18,7 +18,6 @@ from . import serializers
 # TODO: Automatically export/encode as a simple .json schema file
 # http://core-api.github.io/python-client/api-guide/codecs/
 
-
 # @decorators.api_view()
 # @decorators.renderer_classes([renderers.CoreJSONRenderer])
 # def schema_view(request):
@@ -81,3 +80,14 @@ class VariablesByDomain(views.APIView):
             serializers.VariableName(
                 models.Variable.objects.filter(domains__name__exact=pk),
                 many=True).data)
+
+
+class Extract(views.APIView):
+    """
+    Extract variables from a Paper. A single variable can be specified using
+    its primary key, or all variables will be extracted.
+    """
+
+    def get(self, request, paperpk=None):
+        if pk is not None:
+            _ = django.shortcuts.get_object_or_404(models.Variable, pk=pk)

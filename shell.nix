@@ -14,6 +14,7 @@ in with pkgs; with pkgs.python3Packages; buildPythonPackage {
     sphinx
 
     # Development
+    # autoflake # "SPC m r i" to remove unused imports in Spacemacs
     setuptools
     yapf
 
