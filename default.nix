@@ -25,17 +25,13 @@ in with pkgs; with python3Packages; buildPythonPackage rec {
       itypes = callWithPy ./nix/deps/itypes.nix { };
     })
     djangorestframework
+    xpdf # scrape text from PDFs
   ];
 
   # Include static CSS files from Django REST framework and Django Admin
-  postInstall =
-    let path = pname: "lib/python3.6/site-packages/${pname}";
-    in ''
-    mkdir -p "$out/${path pname}/static/"
-    cp -r "${djangorestframework}/${path "rest_framework"}/static/rest_framework" \
-          "$out/${path pname}/static"
-    cp -r "${django}/${path "django"}/contrib/admin/static/admin"\
-          "$out/${path pname}/static"
+  postInstall = ''
+    python repeat/manage.py collectstatic --no-input
+    mv static/ $out/static/
   '';
 
   meta = with lib; {
