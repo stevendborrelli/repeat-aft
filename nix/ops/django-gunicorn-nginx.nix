@@ -30,7 +30,7 @@ in {
           listen ${toString externalPort} default_server;
           server_name _;
           location /static/ {
-              alias ${app}/lib/python3.6/site-packages/${app.pname}/static/;
+              alias ${app}/static/;
           }
           location / {
             proxy_pass http://localhost:${toString internalPort};

@@ -5,6 +5,7 @@ migrations/
 
 # nix-build files
 result
+repeat/static/
 
 # annoying osx files
 .DS_Store
