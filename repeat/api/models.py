@@ -7,6 +7,7 @@ import io
 import json
 import polymorphic.models as polymodels
 import subprocess # exceptions
+import jsonfield
 
 
 def get_serializer(cls, fields="__all__", exclude=None):
@@ -79,10 +80,10 @@ class Paper(models.Model):
         ("Title of the paper (used in combination with ``authors`` to identify"
          " the paper in absence of a ``unique_id``)")
     })
-    authors = models.TextField(**{
+    authors = jsonfield.JSONField(**{
         "max_length": 10000,
         "help_text": "Authors of the paper"
-    }) # TODO: JSONField
+    })
     document = models.FileField(**{
         "upload_to": "pdf/%Y/%m/%d/",
         "help_text":
@@ -196,7 +197,7 @@ class Binary(Variable):
 @json_str
 class OneFromMany(Variable):
     """ A selection of one choice from several options (radio button) """
-    options = models.TextField()  # TODO: JSONField
+    options = jsonfield.JSONField()
 
     class Meta:
         verbose_name_plural = "One From Many (Radios)"
@@ -205,7 +206,7 @@ class OneFromMany(Variable):
 @json_str
 class ManyFromMany(Variable):
     """ A selection of many choices from many options (checkboxes) """
-    options = models.TextField()  # TODO: JSONField
+    options = jsonfield.JSONField()
 
     class Meta:
         verbose_name_plural = "Many From Many (Checkboxes)"
