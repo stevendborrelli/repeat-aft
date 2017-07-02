@@ -17,6 +17,7 @@ in with pkgs; with python3Packages; buildPythonPackage rec {
   src = ./.;
   propagatedBuildInputs = [
     (callWithPy ./nix/deps/django-polymorphic.nix {django = django;})
+    (callWithPy ./nix/deps/django-jsonfield.nix {django = django;})
     (callWithPy ./nix/deps/coreapi.nix {
       requests = requests;
       uritemplate = uritemplate;
