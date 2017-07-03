@@ -6,17 +6,22 @@ import functools
 import io
 import json
 import polymorphic.models as polymodels
-import subprocess # exceptions
+import subprocess  # exceptions
 import jsonfield
 
 
 def get_serializer(cls, fields="__all__", exclude=None):
     """ Create Serializers for a Model on the fly """
 
-    meta = type("Meta", (), {"model": cls, "fields": fields})
-    if exclude is not None:
+    meta = type("Meta", (), {"model": cls,
+                             "fields": fields,
+                             "exclude": exclude})
+
+    if fields == "__all__" and exclude is not None:
         del meta.fields
-        meta.exclude = exclude
+    elif exclude is not None:
+        raise Exception("get_serializer with both fields and exclude")
+
     serializer = type(cls.__name__ + "Serializer",
                       (serializers.ModelSerializer, ), {"Meta": meta})
     serializer.__doc__ = ("Serialize the fields " + str(fields) +
@@ -101,7 +106,7 @@ class Paper(models.Model):
         """ Extract the paper's text before saving """
         text = util.pdf_to_text(self.document.read())
         self.document_text = django.core.files.File(text)
-        super(self.__class__, self).save(*args, **kwargs) # save file to disk
+        super(self.__class__, self).save(*args, **kwargs)  # save file to disk
 
     class Meta:
         unique_together = [("title", "authors"), ]
@@ -134,7 +139,7 @@ class Category(models.Model):
         verbose_name_plural = "Categories"
 
 
-@json_str
+@json_str(exclude=("polymorphic_ctype", ))
 class Variable(polymodels.PolymorphicModel):
     """ A single variable, belonging to one or several Domains. """
 
