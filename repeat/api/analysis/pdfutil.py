@@ -11,9 +11,13 @@
 
 # The above copyright notice and this permission notice shall be included in all
 # copies or substantial portions of the Software.
+"""
+TODO docstring
+"""
 
 import subprocess
 import tempfile
+
 
 def pdf_to_text(data):
     """ Convert PDF data to a string """
@@ -22,6 +26,7 @@ def pdf_to_text(data):
     text = pdf_file_to_text(temp.name)
     temp.close()
     return text
+
 
 def pdf_file_to_text(filename):
     """ Extract text from PDFs using the pdftotext command line utility """

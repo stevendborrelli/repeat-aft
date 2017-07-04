@@ -16,7 +16,11 @@ def runtests():
     django.setup()
     TestRunner = get_runner(settings)
     test_runner = TestRunner()
-    failures = test_runner.run_tests(["api.tests"])
+    failures = test_runner.run_tests([
+        "api.tests",
+        "api.analysis.tests",
+        "api.analysis.plugins"
+    ])
     sys.exit(bool(failures))
 
 if __name__ == "__main__":

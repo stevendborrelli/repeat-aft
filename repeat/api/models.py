@@ -1,4 +1,4 @@
-from . import util
+from .analysis import pdfutil
 from django.db import models
 from rest_framework import serializers  # for __str__ methods
 import django.core.files
@@ -104,7 +104,7 @@ class Paper(models.Model):
 
     def save(self, *args, **kwargs):
         """ Extract the paper's text before saving """
-        text = util.pdf_to_text(self.document.read())
+        text = pdfutil.pdf_to_text(self.document.read())
         self.document_text = django.core.files.File(text)
         super(self.__class__, self).save(*args, **kwargs)  # save file to disk
 
@@ -167,6 +167,8 @@ class Variable(polymodels.PolymorphicModel):
          )
     })
     category = models.ForeignKey(Category, **{
+        "blank": True,
+        "null": True,
         "help_text": "The general category, used to group variables in queries"
     })
     order = models.IntegerField(**{

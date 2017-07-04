@@ -1,6 +1,6 @@
 import django.test
 
-from api import util
+from api.analysis import pdfutil
 
 # TODO
 # class PDFToTextTests(django.test.TestCase):
