@@ -9,13 +9,16 @@ let
     buildPythonPackage = pkgs.python3Packages.buildPythonPackage;
     fetchPypi = pkgs.python3Packages.fetchPypi;
   } // deps);
-in with pkgs; with python3Packages; buildPythonPackage rec {
+in with pkgs; python3Packages.buildPythonPackage rec {
   pname = "repeat";
   version = "0.1.0";
   name = "repeat-${version}";
 
   src = ./.;
-  propagatedBuildInputs = [
+
+  # checkInputs = with python3Packages; [ faker ];
+
+  propagatedBuildInputs = with python3Packages; [
     (callWithPy ./nix/deps/django-polymorphic.nix {django = django;})
     (callWithPy ./nix/deps/django-jsonfield.nix {django = django;})
     (callWithPy ./nix/deps/coreapi.nix {
@@ -26,8 +29,12 @@ in with pkgs; with python3Packages; buildPythonPackage rec {
       itypes = callWithPy ./nix/deps/itypes.nix { };
     })
     djangorestframework
+    pluginbase
+    nltk
     xpdf # scrape text from PDFs
   ];
+
+  NLTK_DATA = (callPackage ./nix/deps/nltk-data/punkt.nix { });
 
   # Include static CSS files from Django REST framework and Django Admin
   postInstall = ''

@@ -1,5 +1,9 @@
 { pkgs ? import <nixpkgs> { } }:
 
+# TODO: get faker in nixpkgs
+# https://github.com/NixOS/nixpkgs/pull/27106
+# import ../../nixpkgs { }
+
 # We need a version more recent than 17.03 for a newer version of django-rest-framework
 import (pkgs.fetchFromGitHub {
   owner  = "NixOS";
