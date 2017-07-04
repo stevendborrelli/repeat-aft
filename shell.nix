@@ -19,8 +19,6 @@ in with pkgs; with pkgs.python3Packages; buildPythonPackage {
     yapf
 
     # Testing
-    tox
     virtualbox
-    python3Packages.virtualenv
   ];
 }

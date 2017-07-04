@@ -1,7 +1,10 @@
+# Sphinx build
 docs/_build/
+
+# Running Django
 *.sqlite3
 migrations/
-*.uml
+repeat/media
 
 # nix-build files
 result
