@@ -19,6 +19,7 @@ in with pkgs; with pkgs.python3Packages; buildPythonPackage {
     yapf
 
     # Testing
+    faker
     virtualbox
   ];
 }

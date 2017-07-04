@@ -16,7 +16,7 @@ in with pkgs; python3Packages.buildPythonPackage rec {
 
   src = ./.;
 
-  # checkInputs = with python3Packages; [ faker ];
+  checkInputs = with python3Packages; [ faker ];
 
   propagatedBuildInputs = with python3Packages; [
     (callWithPy ./nix/deps/django-polymorphic.nix {django = django;})
