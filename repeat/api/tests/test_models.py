@@ -1,17 +1,15 @@
 import django.core.files
 import django.core.files.uploadedfile
 import django.test
-import os
+import factory
+import faker
 import json
+import os
 import random
 import requests
 import string
 
 from api import models
-
-# Create your tests here.
-
-# TODO: random creation of Model instances?
 
 
 def random_string(length):
@@ -35,46 +33,29 @@ def get_pdf(remote_url, local_name="test.pdf"):
 
 class DomainTests(django.test.TestCase):
     def setUp(self):
-        models.Domain.objects.create(
-            name="dom0", description="test description")
+        self.fake = faker.Faker()
 
     def test_domain_str(self):
         """ Test that domain's __str__ represents it as JSON """
-        dom0 = models.Domain.objects.get(name="dom0")
+        name, text = self.fake.name(), self.fake.text()
+        dom0 = models.Domain.objects.create(name=name, description=text)
         self.assertEqual(
-            str(dom0), '{"name": "dom0", "description": "test description"}')
+            str(dom0),
+            '{{"name": "{}", "description": "{}"}}'.format(name, text))
 
 
 class PaperTests(django.test.TestCase):
-    def setUp(self):
+    class PaperFactory(factory.Factory):
+        class Meta:
+            model = models.Paper
+
+        title = "🐋"
+        authors = json.dumps([faker.Faker().name() for _ in range(5)])
         # Fetch the PDF if we don't already have it
-        content = get_pdf("https://arxiv.org/pdf/1706.08508.pdf")
-
-        self.assertNotEqual(b"", content)
-
-        paper0 = models.Paper.objects.create(**{
-            "unique_id": "doi:000",
-            "title": "🐋",
-            "authors": json.dumps(["Langston Barrett"]),
-            "document":
-            django.core.files.uploadedfile.SimpleUploadedFile("file.pdf",
-                                                              content)
-        })
+        document = django.core.files.uploadedfile.SimpleUploadedFile(
+            "file.pdf", get_pdf("https://arxiv.org/pdf/1706.08508.pdf"))
 
     def test_paper(self):
-        paper0 = models.Paper.objects.get(title="🐋")
-        self.assertEqual(set(['unique_id', 'title', 'authors', 'domains']),
-                         set(json.loads(str(paper0)).keys()))
-
-    # class VariableTests(django.test.TestCase):
-
-    #     def setUp(self):
-    #         dom1 = models.Domain.objects.create(name="dom1", description="dom1 description")
-    #         cat0 = models.Category.objects.create(name="cat0", description="cat0 description", order=0)
-    #         models.Binary.objects.create(name="bin0", domains=[dom1], category=cat0, label="bin0 description")
-    #         models.Binary.objects.create(name="bin1", domains=[dom1], category=cat0, label="bin1 description")
-    #         models.OneFromMany.objects.create(name="ofm0", domains=[dom1], category=cat0, label="bin1 description")
-
-    #     def test_variables(self):
-    #         """ Test getting variables from a domain """
-    #         self.assertEqual(models.Variable.objects.filter(domains__name__exact="dom1"), [])
+        self.assertEqual(
+            set(['unique_id', 'title', 'authors', 'domains']),
+            set(json.loads(str(self.PaperFactory.create())).keys()))

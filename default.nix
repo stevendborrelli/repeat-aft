@@ -16,7 +16,10 @@ in with pkgs; python3Packages.buildPythonPackage rec {
 
   src = ./.;
 
-  checkInputs = with python3Packages; [ faker ];
+  # The checkInputs attribute is cleared or deleted or something by
+  # buildPythonPackage, so we need a dummy attribute to reference from shell.nix.
+  check_inputs = with python3Packages; [ faker factory_boy ];
+  checkInputs = check_inputs;
 
   propagatedBuildInputs = with python3Packages; [
     (callWithPy ./nix/deps/django-polymorphic.nix {django = django;})

@@ -11,7 +11,7 @@ in with pkgs; with pkgs.python3Packages; buildPythonPackage {
 
   NLTK_DATA = self.NLTK_DATA;
 
-  buildInputs = self.propagatedBuildInputs ++ [
+  buildInputs = self.check_inputs ++ self.propagatedBuildInputs ++ [
     # Documentation
     sphinx
 
@@ -21,7 +21,6 @@ in with pkgs; with pkgs.python3Packages; buildPythonPackage {
     yapf
 
     # Testing
-    faker
     virtualbox
   ];
 }
