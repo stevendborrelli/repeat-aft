@@ -15,24 +15,36 @@
 TODO docstring
 """
 
+import logging
 import subprocess
 import tempfile
 
+logger = logging.getLogger(__name__)
 
-def pdf_to_text(data):
+
+def pdf_to_text(data, logger=logger):
     """ Convert PDF data to a string """
     temp = tempfile.NamedTemporaryFile()
+    temp = open("/tmp/repeat_file.pdf", "wb")  # TODO: delete me
     temp.write(data)
     text = pdf_file_to_text(temp.name)
     temp.close()
     return text
 
 
-def pdf_file_to_text(filename):
+def pdf_file_to_text(filename, logger=logger):
     """ Extract text from PDFs using the pdftotext command line utility """
     completed = subprocess.run(["pdftotext", "-enc", "UTF-8", filename, "-"],
                                stdout=subprocess.PIPE,
                                stderr=subprocess.PIPE)
 
-    completed.check_returncode()
+    try:
+        completed.check_returncode()
+    except subprocess.CalledProcessError as e:
+        logging.error(e)
+        logging.error("code: {}".format(completed.returncode))
+        logging.error("stdout: {}".format(completed.stdout))
+        logging.error("stderr: ".format(completed.stderr))
+        raise e
+
     return completed.stdout.decode("utf8", "ignore")

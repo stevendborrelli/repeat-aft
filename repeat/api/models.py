@@ -1,13 +1,12 @@
-from .analysis import pdfutil
 from django.db import models
+from pdfutil import pdfutil
 from rest_framework import serializers  # for __str__ methods
 import django.core.files
 import functools
 import io
 import json
-import polymorphic.models as polymodels
-import subprocess  # exceptions
 import jsonfield
+import polymorphic.models as polymodels
 
 
 def get_serializer(cls, fields="__all__", exclude=None):
@@ -104,8 +103,9 @@ class Paper(models.Model):
 
     def save(self, *args, **kwargs):
         """ Extract the paper's text before saving """
-        text = pdfutil.pdf_to_text(self.document.read())
-        self.document_text = django.core.files.File(text)
+        if self.document_text == "":
+            text = pdfutil.pdf_to_text(self.document.read())
+            self.document_text = django.core.files.File(text)
         super(self.__class__, self).save(*args, **kwargs)  # save file to disk
 
     class Meta:

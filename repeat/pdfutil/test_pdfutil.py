@@ -1,0 +1,26 @@
+import os
+import unittest
+from . import pdfutil
+
+
+def read_bytes(path):
+    with open(path, "rb") as f:
+        return f.read()
+
+
+HERE = os.path.abspath(os.path.dirname(__file__))
+BLANK_PATH = os.path.join(HERE, "blank.pdf")
+BLANK = read_bytes(BLANK_PATH)
+LOREM_PATH = os.path.join(HERE, "lorem.pdf")
+LOREM = read_bytes(LOREM_PATH)
+
+
+class PDFUtilTests(unittest.TestCase):
+    def test_pdf_file_to_text(self):
+        self.assertEqual("\x0c", pdfutil.pdf_file_to_text(BLANK_PATH))
+        self.assertEqual(
+            ("Lorem Ipsum is the dummy text of the typesetting industry."
+             "\n\n\x0c"), pdfutil.pdf_file_to_text(LOREM_PATH))
+
+    # def test_pdf_to_text(self):
+    #     self.assertEqual("", pdfutil.pdf_to_text(BLANK))

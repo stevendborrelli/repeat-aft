@@ -19,7 +19,8 @@ def runtests():
     failures = test_runner.run_tests([
         "api.tests",
         "api.analysis.tests",
-        "api.analysis.plugins"
+        "api.analysis.plugins",
+        "pdfutil"
     ])
     sys.exit(bool(failures))
 
