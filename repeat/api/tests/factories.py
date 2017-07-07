@@ -25,20 +25,11 @@ class Domain(factory.DjangoModelFactory):
     description = factory.Faker("paragraph")
 
 
-def stub(arg):
-    """ Return a constant function of no arguments wrapping a value """
-
-    def inner():
-        return arg
-
-    return inner
-
-
 class Paper(factory.DjangoModelFactory):
     class Meta:
         model = models.Paper
 
     title = factory.Faker("sentence", nb_words=4)
     unique_id = factory.Faker("isbn10")
-    authors = factory_stub(json.dumps([10 * fake.name()]))
+    authors = json.dumps([10 * fake.name()])
     document = factory.django.FileField(data=test_pdfutil.BLANK)
