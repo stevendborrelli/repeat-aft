@@ -9,6 +9,7 @@ logger = logging.getLogger(__name__)
 def extract(text, logger=logger):
     """ TODO: docstring """
 
+
     search = functools.partial(re.search, flags=re.IGNORECASE | re.DOTALL)
 
     def search_any(patterns, text):

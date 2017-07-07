@@ -7,6 +7,14 @@ from . import funding
 
 fake = faker.Faker()
 
+TESTS = [
+    ("This research was funded by the NIH.", "the NIH"),
+    ("This program was funded in part by our member stations.",
+        "our member stations"),
+    ("We received funding from Reed College.", "Reed College"),
+    ("We received funding and technical support from Reed College.",
+    "Reed College")
+]
 
 class TestFunding(unittest.TestCase):
     def setUp(self):
@@ -15,21 +23,13 @@ class TestFunding(unittest.TestCase):
         self.extract = functools.partial(funding.extract, logger=logger)
 
     def test_funding(self):
-        tests = [
-            ("This research was funded by the NIH.", "the NIH"),
-            ("This program was funded in part by our member stations.",
-             "our member stations"),
-            ("We received funding from Reed College.", "Reed College"),
-            ("We received funding and technical support from Reed College.",
-            "Reed College")
-        ]
 
         # Surround a sentence with a bunch of randomly generated text
         pad = lambda sentence: " ".join([fake.text(), sentence, fake.text()])
 
         # Does ``extract`` 1. Find the relevant sentence and 2. extract the
         # relevant portion?
-        for sentence, result in tests:
+        for sentence, result in TESTS:
             self.assertEqual((result, sentence), self.extract(pad(sentence)))
 
         # Negatives
