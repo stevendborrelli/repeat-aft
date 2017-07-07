@@ -14,13 +14,15 @@ BLANK = read_bytes(BLANK_PATH)
 LOREM_PATH = os.path.join(HERE, "lorem.pdf")
 LOREM = read_bytes(LOREM_PATH)
 
+BLANK_RESULT = "\x0c"
+LOREM_RESULT = ("Lorem Ipsum is the dummy text of the typesetting industry."
+             "\n\n\x0c")
 
 class PDFUtilTests(unittest.TestCase):
     def test_pdf_file_to_text(self):
-        self.assertEqual("\x0c", pdfutil.pdf_file_to_text(BLANK_PATH))
-        self.assertEqual(
-            ("Lorem Ipsum is the dummy text of the typesetting industry."
-             "\n\n\x0c"), pdfutil.pdf_file_to_text(LOREM_PATH))
+        self.assertEqual(BLANK_RESULT, pdfutil.pdf_file_to_text(BLANK_PATH))
+        self.assertEqual(LOREM_RESULT, pdfutil.pdf_file_to_text(LOREM_PATH))
 
-    # def test_pdf_to_text(self):
-    #     self.assertEqual("", pdfutil.pdf_to_text(BLANK))
+    def test_pdf_to_text(self):
+        self.assertEqual(BLANK_RESULT, pdfutil.pdf_to_text(BLANK))
+        self.assertEqual(LOREM_RESULT, pdfutil.pdf_to_text(LOREM))

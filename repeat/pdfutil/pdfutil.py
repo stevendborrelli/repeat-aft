@@ -24,12 +24,11 @@ logger = logging.getLogger(__name__)
 
 def pdf_to_text(data, logger=logger):
     """ Convert PDF data to a string """
-    temp = tempfile.NamedTemporaryFile()
-    temp = open("/tmp/repeat_file.pdf", "wb")  # TODO: delete me
-    temp.write(data)
-    text = pdf_file_to_text(temp.name)
-    temp.close()
-    return text
+    temp = tempfile.NamedTemporaryFile(delete=False)
+    with temp as f:
+        temp.write(data)
+
+    return pdf_file_to_text(temp.name, logger=logger)
 
 
 def pdf_file_to_text(filename, logger=logger):
@@ -44,7 +43,7 @@ def pdf_file_to_text(filename, logger=logger):
         logging.error(e)
         logging.error("code: {}".format(completed.returncode))
         logging.error("stdout: {}".format(completed.stdout))
-        logging.error("stderr: ".format(completed.stderr))
+        logging.error("stderr: {}".format(completed.stderr))
         raise e
 
     return completed.stdout.decode("utf8", "ignore")
