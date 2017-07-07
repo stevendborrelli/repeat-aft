@@ -16,6 +16,7 @@ def generic_factory(model):
 
 Domain = generic_factory(models.Domain)
 
+
 class Domain(factory.DjangoModelFactory):
     class Meta:
         model = models.Domain
@@ -32,13 +33,12 @@ def stub(arg):
 
     return inner
 
+
 class Paper(factory.DjangoModelFactory):
     class Meta:
         model = models.Paper
 
     title = factory.Faker("sentence", nb_words=4)
-    unique_id = "isbn10:{}".format(faker.Faker().isbn10())
-    authors = factory.LazyFunction(stub(json.dumps([10 * fake.name()])))
-    # TODO: when not specifying document_text, we get a traceback.
+    unique_id = factory.Faker("isbn10")
+    authors = factory_stub(json.dumps([10 * fake.name()]))
     document = factory.django.FileField(data=test_pdfutil.BLANK)
-    document_text = "text"
