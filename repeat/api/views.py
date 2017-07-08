@@ -1,16 +1,15 @@
-from django.shortcuts import render
-from django.http import JsonResponse
 import django.shortcuts
 
 # API schema views
-from rest_framework import decorators
-from rest_framework import renderers
+# from rest_framework import decorators
+# from rest_framework import renderers
 from rest_framework import response
 # from rest_framework import schema
 # Other views
 from rest_framework import generics
 from rest_framework import permissions
 from rest_framework import views
+from . import analysis
 from . import models
 from . import serializers
 
@@ -86,8 +85,13 @@ class Extract(views.APIView):
     """
     Extract variables from a Paper. A single variable can be specified using
     its primary key, or all variables will be extracted.
+
+    TODO: multiple
     """
 
-    def get(self, request, paperpk=None):
-        if pk is not None:
-            _ = django.shortcuts.get_object_or_404(models.Variable, pk=pk)
+    def get(self, request, paperpk=None, varpk=None):
+        if varpk is not None:
+            _ = django.shortcuts.get_object_or_404(models.Variable, pk=varpk)
+        paper = django.shortcuts.get_object_or_404(models.Paper, pk=paperpk)
+        text, _ = paper.get_text()
+        return response.Response(data={"value": analysis.extract(text, varpk)})

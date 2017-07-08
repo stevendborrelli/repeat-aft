@@ -51,7 +51,11 @@ urlpatterns = [
     # List the variables of a domain
     url(r"^lists/(?P<pk>[^/]+)$",
         views.VariablesByDomain.as_view(),
-        name="variable_lists")
+        name="variable_lists"),
+
+    url(r"^extract/(?P<paperpk>[^/]+)/(?P<varpk>[^/]+)$",
+        views.Extract.as_view(),
+        name="extract")
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
