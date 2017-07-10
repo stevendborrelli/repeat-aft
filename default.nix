@@ -8,6 +8,7 @@ with pkgs; let
     "3.4" = python34Packages;
     "3.5" = python35Packages;
     "3.6" = python36Packages;
+    "pypy" = pypyPackages;
   };
   pyPkgs =
     let val = builtins.getEnv "PYTHON_VERSION";
