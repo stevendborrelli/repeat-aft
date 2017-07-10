@@ -20,7 +20,6 @@ in with pkgs; with pkgs.python3Packages; buildPythonPackage {
     setuptools
     yapf
 
-    # Testing
-    virtualbox
-  ];
+    # Only install virtualbox if we're not in Travis, it's a little heavy
+  ] ++ (if builtins.getEnv "CI" == "" then [ virtualbox ] else []);
 }
