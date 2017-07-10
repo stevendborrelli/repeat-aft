@@ -1,44 +1,23 @@
 # -*- mode: nix -*-
 { pkgs ? import ./nix/pinned-pkgs.nix { } }:
-# { lib, callPackage, python3Packages }:
 
-with pkgs; python3Packages.buildPythonPackage rec {
-  pname = "repeat";
-  version = "0.1.0";
-  name = "repeat-${version}";
-
-  src = ./.;
-
-  # The checkInputs attribute is cleared or deleted or something by
-  # buildPythonPackage, so we need a dummy attribute to reference from shell.nix.
-  check_inputs = with python3Packages; [ faker factory_boy ];
-  checkInputs = check_inputs;
-
-  propagatedBuildInputs = with python3Packages; [
-    (callPackage ./nix/deps/django-polymorphic.nix { })
-    (callPackage ./nix/deps/django-jsonfield.nix { })
-    (callPackage ./nix/deps/coreapi.nix {
-      coreschema = callPackage ./nix/deps/coreschema.nix { jinja2 = jinja2; };
-      itypes = callPackage ./nix/deps/itypes.nix { };
-    })
-    djangorestframework
-    pluginbase
-    nltk
-    xpdf # scrape text from PDFs
-  ];
-
-  NLTK_DATA = (callPackage ./nix/deps/nltk-data/punkt.nix { });
-
-  # Include static CSS files from Django REST framework and Django Admin
-  postInstall = ''
-    python repeat/manage.py collectstatic --no-input
-    mv static/ $out/static/
-  '';
-
-  meta = with lib; {
-    homepage = https://github.com/ripeta/repeat-aft;
-    description = "";
-    maintainers = with maintainers; [ siddharthist ];
-    platforms = platforms.linux;
+# You can pick a Python version to build with by setting e.g. PYTHON_VERSION=3.5
+with pkgs; let
+  versionMap = {
+    "3.3" = python33Packages;
+    "3.4" = python34Packages;
+    "3.5" = python35Packages;
+    "3.6" = python36Packages;
   };
+  pyPkgs =
+    let val = builtins.getEnv "PYTHON_VERSION";
+    in versionMap . "${val}" or python3Packages;
+in with pyPkgs; callPackage ./nix/repeat.nix {
+  django-polymorphic = callPackage ./nix/deps/django-polymorphic.nix { };
+  django-jsonfield = callPackage ./nix/deps/django-jsonfield.nix { };
+  punkt = callPackage ./nix/deps/nltk-data/punkt.nix { };
+  # coreapi = callPackage ./nix/deps/coreapi.nix {
+  #     coreschema = callPackage ./nix/deps/coreschema.nix { };
+  #     itypes = callPackage ./nix/deps/itypes.nix { };
+  # };
 }

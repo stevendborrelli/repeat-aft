@@ -1,5 +1,12 @@
 language: nix
+
 install:
   - travis_wait nix-shell --no-build-output
   - cd repeat/pdfutil; ./create_pdfs.py; cd -
-script: nix-shell --run "bash ci.sh"
+
+script: nix-shell --run "bash scripts/test.sh"
+
+env:
+  - PYTHON_VERSION=3.4
+  - PYTHON_VERSION=3.5
+  - PYTHON_VERSION=3.6
