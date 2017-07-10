@@ -18,7 +18,7 @@ class PluginTests(django.test.TestCase):
 
     def test_modulenotfound(self):
         """ When a module isn't found, an exception should be raised """
-        self.assertRaises(ModuleNotFoundError, self.extract, "", "fake_name")
+        self.assertRaises(ImportError, self.extract, "", "fake_name")
 
     def test_dummy_plugin(self):
         """ Call a dummy plugin """
