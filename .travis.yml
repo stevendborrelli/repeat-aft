@@ -7,6 +7,6 @@ install:
 script: nix-shell --run "bash scripts/test.sh"
 
 env:
-  - PYTHON_VERSION=3.4
+  # subprocess.run was introduced in 3.5
   - PYTHON_VERSION=3.5
   - PYTHON_VERSION=3.6
