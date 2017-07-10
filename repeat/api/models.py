@@ -1,13 +1,13 @@
-from . import util
+from django.core.files import uploadedfile
 from django.db import models
+from pdfutil import pdfutil
 from rest_framework import serializers  # for __str__ methods
 import django.core.files
 import functools
 import io
 import json
-import polymorphic.models as polymodels
-import subprocess  # exceptions
 import jsonfield
+import polymorphic.models as polymodels
 
 
 def get_serializer(cls, fields="__all__", exclude=None):
@@ -99,17 +99,41 @@ class Paper(models.Model):
         "upload_to": "txt/%Y/%m/%d/",
         "blank": True,
         "help_text":
-        "Body of paper, will be extracted automatically if not offered"
+        "Body of paper, will be lazily extracted if not offered"
     })
-
-    def save(self, *args, **kwargs):
-        """ Extract the paper's text before saving """
-        text = util.pdf_to_text(self.document.read())
-        self.document_text = django.core.files.File(text)
-        super(self.__class__, self).save(*args, **kwargs)  # save file to disk
 
     class Meta:
         unique_together = [("title", "authors"), ]
+
+    def _read_file(self, f, mode="r"):
+        f.open(mode=mode)
+        content = f.read()
+        f.close()
+        return content
+
+    def _read_document(self):
+        # For some reason, using the .open() method in a "with" doesn't work
+        return self._read_file(self.document, mode="rb")
+
+    def _read_document_text(self):
+        # For some reason, using the .open() method in a "with" doesn't work
+        return self._read_file(self.document_text)
+
+    def get_text(self):
+        """ Return the paper's extracted text or extract and save it now.
+
+        Returns:
+            A tuple containing the text and Boolean value describing whether or
+            not the paper already had its text extracted.
+        """
+        try:
+            return (self._read_document_text(), True)
+        except ValueError as e:
+            text = pdfutil.pdf_to_text(self._read_document())
+            self.document_text = uploadedfile.SimpleUploadedFile(
+                self.title + ".txt", text.encode("utf8"))
+            self.save()
+            return (self._read_document_text(), False)
 
 
 @json_str
@@ -167,6 +191,8 @@ class Variable(polymodels.PolymorphicModel):
          )
     })
     category = models.ForeignKey(Category, **{
+        "blank": True,
+        "null": True,
         "help_text": "The general category, used to group variables in queries"
     })
     order = models.IntegerField(**{

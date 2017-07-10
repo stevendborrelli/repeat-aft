@@ -1,80 +1,60 @@
+from django.core.files import uploadedfile
 import django.core.files
 import django.core.files.uploadedfile
 import django.test
-import os
+import factory
+import faker
+import io
 import json
-import random
-import requests
-import string
 
-from api import models
+from . import factories
+from pdfutil import test_pdfutil
 
-# Create your tests here.
-
-# TODO: random creation of Model instances?
-
-
-def random_string(length):
-    return "".join(
-        random.choice(string.ascii_lowercase) for i in range(length))
-
-
-def get_pdf(remote_url, local_name="test.pdf"):
-    """ Cache a remote PDF """
-    path = os.path.join(os.path.abspath(os.path.dirname(__file__)), local_name)
-    try:
-        with open(path, "rb") as f:
-            return f.read()
-    except FileNotFoundError:
-        content = requests.get(remote_url).content
-        with open(path, "wb") as f:
-            f.write(content)
-
-    return content
+from .. import models
 
 
 class DomainTests(django.test.TestCase):
-    def setUp(self):
-        models.Domain.objects.create(
-            name="dom0", description="test description")
-
     def test_domain_str(self):
         """ Test that domain's __str__ represents it as JSON """
-        dom0 = models.Domain.objects.get(name="dom0")
-        self.assertEqual(
-            str(dom0), '{"name": "dom0", "description": "test description"}')
+        dom0 = factories.Domain.create()
+        json_str = '{{"name": "{}", "description": "{}"}}'.format(
+            dom0.name, dom0.description)
+        self.assertEqual(str(dom0), json_str)
 
 
 class PaperTests(django.test.TestCase):
-    def setUp(self):
-        # Fetch the PDF if we don't already have it
-        content = get_pdf("https://arxiv.org/pdf/1706.08508.pdf")
-
-        self.assertNotEqual(b"", content)
-
-        paper0 = models.Paper.objects.create(**{
-            "unique_id": "doi:000",
-            "title": "🐋",
-            "authors": json.dumps(["Langston Barrett"]),
-            "document":
-            django.core.files.uploadedfile.SimpleUploadedFile("file.pdf",
-                                                              content)
-        })
-
     def test_paper(self):
-        paper0 = models.Paper.objects.get(title="🐋")
-        self.assertEqual(set(['unique_id', 'title', 'authors', 'domains']),
-                         set(json.loads(str(paper0)).keys()))
+        paper = factories.Paper.create()
+        self.assertEqual(
+            set(['unique_id', 'title', 'authors', 'domains']),
+            set(json.loads(str(paper)).keys()))
 
-    # class VariableTests(django.test.TestCase):
+    def test_update_file(self):
+        paper = factories.Paper.create()
+        content = faker.Faker().text().encode()
 
-    #     def setUp(self):
-    #         dom1 = models.Domain.objects.create(name="dom1", description="dom1 description")
-    #         cat0 = models.Category.objects.create(name="cat0", description="cat0 description", order=0)
-    #         models.Binary.objects.create(name="bin0", domains=[dom1], category=cat0, label="bin0 description")
-    #         models.Binary.objects.create(name="bin1", domains=[dom1], category=cat0, label="bin1 description")
-    #         models.OneFromMany.objects.create(name="ofm0", domains=[dom1], category=cat0, label="bin1 description")
+        # The paper initially has no document_text
+        with self.assertRaises(ValueError):
+            paper.document_text.file
 
-    #     def test_variables(self):
-    #         """ Test getting variables from a domain """
-    #         self.assertEqual(models.Variable.objects.filter(domains__name__exact="dom1"), [])
+        paper.document_text = uploadedfile.SimpleUploadedFile("test.dat",
+                                                              content)
+        paper.save()
+
+        self.assertEqual(content, paper.document_text.read())
+
+    def test_get_text(self):
+        # Initially has no document_text attribute
+        blank_paper = factories.Paper.create()
+        self.assertEqual(
+            (test_pdfutil.BLANK_RESULT, False), blank_paper.get_text())
+        self.assertEqual(
+            (test_pdfutil.BLANK_RESULT, True), blank_paper.get_text())
+
+        lorem_paper = factories.Paper.create(document=factory.django.FileField(
+            data=test_pdfutil.LOREM))
+
+        self.assertEqual(
+            (test_pdfutil.LOREM_RESULT, False), lorem_paper.get_text())
+        self.assertEqual(
+            (test_pdfutil.LOREM_RESULT, True), lorem_paper.get_text())

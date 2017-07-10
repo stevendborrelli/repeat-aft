@@ -1,0 +1,23 @@
+[
+    {
+        "model": "api.domain",
+        "pk": "core",
+        "fields": {
+            "description": "The unique domain to which all papers belong. Variables in this domain will always be extracted, requested, and saved."
+        }
+    },
+    {
+        "model": "api.variable",
+        "pk": "funding",
+        "fields": {
+            "polymorphic_ctype": 9,
+            "label": "Where did the funding for this study come from?",
+            "identifier": false,
+            "order": 5,
+            "skip_logic": "",
+            "domains": [
+                "core"
+            ]
+        }
+    }
+]
