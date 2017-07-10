@@ -10,3 +10,8 @@ env:
   # subprocess.run was introduced in 3.5
   - PYTHON_VERSION=3.5
   - PYTHON_VERSION=3.6
+
+matrix:
+  fast_finish: true
+  allow_failures:
+    - env: PYTHON_VERSION=3.5
