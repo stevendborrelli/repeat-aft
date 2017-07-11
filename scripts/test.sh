@@ -16,4 +16,9 @@ if [[ -z "$CI" ]]; then
   done
 fi
 
+echo ">>> Running coverage.py..."
+coverage run --source ./repeat ./setup.py test
+
+coverage report
+
 echo ">>> Done!"
