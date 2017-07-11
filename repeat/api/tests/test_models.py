@@ -13,6 +13,12 @@ from pdfutil import test_pdfutil
 from .. import models
 
 
+class GetSerializerTests(django.test.TestCase):
+    def test_get_serializer(self):
+        self.assertRaises(Exception, models.get_serializer,
+                          [None, "str", "str"])
+
+
 class DomainTests(django.test.TestCase):
     def test_domain_str(self):
         """ Test that domain's __str__ represents it as JSON """
@@ -46,15 +52,15 @@ class PaperTests(django.test.TestCase):
     def test_get_text(self):
         # Initially has no document_text attribute
         blank_paper = factories.Paper.create()
-        self.assertEqual(
-            (test_pdfutil.BLANK_RESULT, False), blank_paper.get_text())
-        self.assertEqual(
-            (test_pdfutil.BLANK_RESULT, True), blank_paper.get_text())
+        self.assertEqual((test_pdfutil.BLANK_RESULT, False),
+                         blank_paper.get_text())
+        self.assertEqual((test_pdfutil.BLANK_RESULT, True),
+                         blank_paper.get_text())
 
         lorem_paper = factories.Paper.create(document=factory.django.FileField(
             data=test_pdfutil.LOREM))
 
-        self.assertEqual(
-            (test_pdfutil.LOREM_RESULT, False), lorem_paper.get_text())
-        self.assertEqual(
-            (test_pdfutil.LOREM_RESULT, True), lorem_paper.get_text())
+        self.assertEqual((test_pdfutil.LOREM_RESULT, False),
+                         lorem_paper.get_text())
+        self.assertEqual((test_pdfutil.LOREM_RESULT, True),
+                         lorem_paper.get_text())
