@@ -19,5 +19,19 @@
                 "core"
             ]
         }
+    },
+    {
+        "model": "api.variable",
+        "pk": "grant_id",
+        "fields": {
+            "polymorphic_ctype": 9,
+            "label": "What was the ID of the grant that funded this study?",
+            "identifier": false,
+            "order": 6,
+            "skip_logic": "",
+            "domains": [
+                "core"
+            ]
+        }
     }
 ]

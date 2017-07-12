@@ -16,12 +16,8 @@ def extract(text, logger=logger):
         if search_any([r'funded.*?by', r'funding.*?from'], sentence):
             # yapf: disable
             match = search_any([
-                # e.g. "This research was funded by a grant from <name>"
-                r'grant.*?from (.*?)[^\w\s-]',
-                # e.g. "This research was funded by <name>"
-                r'funded.*?by (.*?)[^\w\s-]',
-                # e.g. "We received funding from <name>"
-                r'funding.*from (.*?)[^\w\s-]'
+                # e.g. "This research was funded by Reed College (grant id: #102)"
+                "grant.*?(\w*\d[\w\d/-]*)"
             ], sentence)
             # yapf: enable
             try:

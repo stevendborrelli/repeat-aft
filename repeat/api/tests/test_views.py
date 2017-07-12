@@ -27,5 +27,7 @@ class ViewTests(django.test.TestCase):
         for document in [test_pdfutil.BLANK, test_pdfutil.LOREM]:
             paper = factories.Paper.create(document=factory.django.FileField(data=document))
             c = django.test.Client()
-            url = "{}/extract/{}/{}".format(BASE_URL, paper.unique_id, "funding")
-            self.assertEqual(b'{"value":null}', c.get(url).content)
+            variables = [ "funding", "grant_id" ]
+            for var in variables:
+                url = "{}/extract/{}/{}".format(BASE_URL, paper.unique_id, var)
+                self.assertEqual(b'{"value":null}', c.get(url).content)
