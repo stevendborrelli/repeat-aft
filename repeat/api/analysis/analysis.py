@@ -1,6 +1,4 @@
-"""
-TODO docstring
-"""
+""" TODO: documentation for the plugin architecture """
 
 import logging
 import os.path
@@ -19,9 +17,32 @@ lfilter = lambda *args, **kwargs: list(filter(*args, **kwargs))
 
 
 def extract(text, variable_name, plugin_paths=[], logger=logger):
-    """
-    Extract a single variable from a paper. Returns None if no plugin could be
-    found to extract that variable.
+    """ Attempt to extract a single variable from a paper.
+
+    Args:
+        text: The full text of the paper
+        variable_name: See models.Variable.name
+        plugin_paths: Directory in which to search for plugins
+        logger: An instance of Python's standard logging class
+
+    Returns:
+        The result of calling the plugin's ``extract`` function.
+
+    Raises:
+        ModuleNotFoundError: When there is no such plugin.
+
+    Examples:
+
+        >>> try:
+        ...    extract("", "phony_name")
+        ... except ModuleNotFoundError:
+        ...    pass
+        ...
+
+        >>> # There is a plugin for the "funding" variable
+        >>> extract("This research was funded by Wayne Enterprises.", "funding")
+        ('Wayne Enterprises', 'This research was funded by Wayne Enterprises.')
+
     """
     plugin_paths = lmap(os.path.abspath, plugin_paths + [BASE_PLUGIN_DIR])
     logger.debug("Fetching plugin {} from paths {}".format(variable_name,
