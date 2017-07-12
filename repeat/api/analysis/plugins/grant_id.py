@@ -8,7 +8,7 @@ logger = logging.getLogger(__name__)
 
 
 def extract(text, logger=logger):
-    """ TODO: docstring """
+    """ See Variables.objects.get(pk="extract") and the file test_grant_id.py """
 
     search_any = functools.partial(re_util.search_any, logger=logger)
 

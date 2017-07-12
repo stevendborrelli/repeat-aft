@@ -4,7 +4,6 @@
 # Code taken from
 # https://docs.djangoproject.com/en/1.11/topics/testing/advanced/
 
-import doctest
 import os
 import os.path
 import sys

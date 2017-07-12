@@ -10,11 +10,12 @@ fake = faker.Faker()
 TESTS = [
     ("This research was funded by the NIH.", "the NIH"),
     ("This program was funded in part by our member stations.",
-        "our member stations"),
-    ("We received funding from Reed College.", "Reed College"),
-    ("We received funding and technical support from Reed College.",
-    "Reed College")
+     "our member stations"),
+    ("We received funding from Reed College.", "Reed College"), (
+        "We received funding and technical support from Reed College.",
+        "Reed College")
 ]
+
 
 class TestFunding(unittest.TestCase):
     def setUp(self):
