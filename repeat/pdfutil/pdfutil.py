@@ -23,7 +23,20 @@ logger = logging.getLogger(__name__)
 
 
 def pdf_to_text(data, logger=logger):
-    """ Convert PDF data to a string """
+    """ Convert PDF data to a string
+
+    Simply creates a temporary file and calls ``pdf_file_to_text``
+
+    Args:
+        data: The data, as bytes, of a PDF file
+        logger: An instance of Python's standard logging class
+
+    Returns:
+        The text contained in the PDF file, as a string
+
+    Raises:
+        See ``pdf_file_to_text``
+    """
     temp = tempfile.NamedTemporaryFile(delete=False)
     with temp as f:
         temp.write(data)
@@ -32,7 +45,25 @@ def pdf_to_text(data, logger=logger):
 
 
 def pdf_file_to_text(filename, logger=logger):
-    """ Extract text from PDFs using the pdftotext command line utility """
+    """ Extract text from PDFs using the pdftotext command line utility
+
+    Args:
+        filename: The path to the PDF file
+        logger: An instance of Python's standard logging class
+
+    Returns:
+        The text contained in the PDF file, as a string
+
+    Raises:
+        FileNotFoundError: When ``pdftotext`` isn't installed
+        subprocess.CalledProcessError: When ``pdftotext`` exits with an error
+
+    Examples:
+
+        >>> import os.path
+        >>> pdf_file_to_text(os.path.join(os.path.dirname(__file__), "blank.pdf"))
+        '\\x0c'
+    """
     completed = subprocess.run(["pdftotext", "-enc", "UTF-8", filename, "-"],
                                stdout=subprocess.PIPE,
                                stderr=subprocess.PIPE)

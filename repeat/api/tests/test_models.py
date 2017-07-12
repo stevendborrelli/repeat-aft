@@ -1,3 +1,4 @@
+import doctest
 from django.core.files import uploadedfile
 import django.core.files
 import django.core.files.uploadedfile
@@ -64,3 +65,9 @@ class PaperTests(django.test.TestCase):
                          lorem_paper.get_text())
         self.assertEqual((test_pdfutil.LOREM_RESULT, True),
                          lorem_paper.get_text())
+
+
+def load_tests(loader, tests, ignore):
+    """ Enable unittest discovery of doctests """
+    tests.addTests(doctest.DocTestSuite(models))
+    return tests

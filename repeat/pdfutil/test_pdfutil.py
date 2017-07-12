@@ -1,3 +1,4 @@
+import doctest
 import os
 import unittest
 from . import pdfutil
@@ -16,7 +17,8 @@ LOREM = read_bytes(LOREM_PATH)
 
 BLANK_RESULT = "\x0c"
 LOREM_RESULT = ("Lorem Ipsum is the dummy text of the typesetting industry."
-             "\n\n\x0c")
+                "\n\n\x0c")
+
 
 class PDFUtilTests(unittest.TestCase):
     def test_pdf_file_to_text(self):
@@ -26,3 +28,9 @@ class PDFUtilTests(unittest.TestCase):
     def test_pdf_to_text(self):
         self.assertEqual(BLANK_RESULT, pdfutil.pdf_to_text(BLANK))
         self.assertEqual(LOREM_RESULT, pdfutil.pdf_to_text(LOREM))
+
+
+def load_tests(loader, tests, ignore):
+    """ Enable unittest discovery of doctests """
+    tests.addTests(doctest.DocTestSuite(pdfutil))
+    return tests
