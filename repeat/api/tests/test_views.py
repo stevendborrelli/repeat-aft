@@ -3,6 +3,7 @@ Testing views is really more like integration testing than unit testing, but it
 shouldn't matter too much.\
 """
 
+import doctest
 import django.core.files.uploadedfile
 import django.test
 import factory
@@ -25,9 +26,16 @@ class ViewTests(django.test.TestCase):
         dom = factories.Domain.create()
 
         for document in [test_pdfutil.BLANK, test_pdfutil.LOREM]:
-            paper = factories.Paper.create(document=factory.django.FileField(data=document))
+            paper = factories.Paper.create(document=factory.django.FileField(
+                data=document))
             c = django.test.Client()
-            variables = [ "funding", "grant_id" ]
+            variables = ["funding", "grant_id"]
             for var in variables:
                 url = "{}/extract/{}/{}".format(BASE_URL, paper.unique_id, var)
                 self.assertEqual(b'{"value":null}', c.get(url).content)
+
+
+def load_tests(loader, tests, ignore):
+    """ Enable unittest discovery of doctests """
+    tests.addTests(doctest.DocTestSuite(views))
+    return tests

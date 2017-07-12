@@ -1,3 +1,4 @@
+import doctest
 import django.test
 import functools
 import logging
@@ -31,3 +32,9 @@ class PluginTests(django.test.TestCase):
         for sentence, result in test_funding.TESTS:
             self.assertEqual(
                 (result, sentence), self.extract(sentence, "funding"))
+
+
+def load_tests(loader, tests, ignore):
+    """ Enable unittest discovery of doctests """
+    tests.addTests(doctest.DocTestSuite(analysis))
+    return tests

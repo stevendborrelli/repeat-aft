@@ -20,7 +20,7 @@ def runtests():
     os.environ["DJANGO_SETTINGS_MODULE"] = "repeat.settings"
     django.setup()
     TestRunner = get_runner(settings)
-    test_runner = TestRunner()
+    test_runner = TestRunner(verbosity=2)
     failures = test_runner.run_tests([HERE])
     sys.exit(bool(failures))
 
