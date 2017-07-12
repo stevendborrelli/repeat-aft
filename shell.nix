@@ -17,6 +17,7 @@ in with pkgs; with pkgs.python3Packages; buildPythonPackage {
 
     # Development
     # autoflake # "SPC m r i" to remove unused imports in Spacemacs
+    coverage
     setuptools
     yapf
 
