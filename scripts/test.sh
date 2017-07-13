@@ -2,7 +2,10 @@
 set -e
 
 echo ">>> Building documentation..."
-nix-shell --no-build-output --run 'make -C ./docs html'
+rm -rf docs/python/*
+nix-shell --no-build-output --run \
+          'sphinx-apidoc -o docs/python repeat && \
+           make -C ./docs html'
 
 echo ">>> Running nix-build..."
 nix-build .

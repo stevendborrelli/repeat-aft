@@ -29,13 +29,14 @@ def extract(text, variable_name, plugin_paths=[], logger=logger):
         The result of calling the plugin's ``extract`` function.
 
     Raises:
-        ModuleNotFoundError: When there is no such plugin.
+        ModuleNotFoundError: When there is no such plugin
+        ImportError: Python 3.5 has no ModuleNotFoundError
 
     Examples:
 
         >>> try:
         ...    extract("", "phony_name")
-        ... except ModuleNotFoundError:
+        ... except ImportError: # Python 3.5 compat
         ...    pass
         ...
 
