@@ -1,0 +1,21 @@
+---
+# See http://pre-commit.com/
+
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  sha: v0.9.1
+  hooks:
+    # Prevent giant files from being committed.
+    - id: check-added-large-files
+    # Simply check whether files parse as valid python.
+    - id: check-ast
+    # Attempts to load all json/yaml files to verify syntax.
+    - id: check-json
+    - id: check-yaml
+    # Check for files that contain merge conflict strings.
+    - id: check-merge-conflict
+    # Makes sure files end in a newline and only a newline.
+    - id: end-of-file-fixer
+    # Run flake8 on your python files.
+    - id: flake8
+      args: [ "--ignore=E265", "--max-line-length=85", "--ignore=E731" ]
+    - id: trailing-whitespace
