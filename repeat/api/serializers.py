@@ -1,5 +1,3 @@
-from rest_framework import serializers
-import functools
 from . import models
 
 # Serializers that export every field

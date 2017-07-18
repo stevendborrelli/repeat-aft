@@ -2,9 +2,7 @@ from django.core.files import uploadedfile
 from django.db import models
 from pdfutil import pdfutil
 from rest_framework import serializers  # for __str__ methods
-import django.core.files
 import functools
-import io
 import json
 import jsonfield
 import polymorphic.models as polymodels
@@ -77,7 +75,8 @@ class Paper(models.Model):
         "primary_key": True,
         "unique": True,
         "help_text":
-        "A unique identifier for the paper, prefixed with doi:, isbn:, or pmid:"
+        ("A unique identifier for the paper, prefixed with doi:, isbn:, "
+         " or pmid:")
     })
     title = models.TextField(**{
         "max_length": 1000,
@@ -155,8 +154,11 @@ class Category(models.Model):
         "help_text":
         ("Order to present this category to the user (lower is sooner)."
          " For instance, we might want to present all questions relating to "
-         " the bibliographic information first. To this end, we would construct "
-         " a 'Bibliographic Information' category, and set it's order to 0. ")
+         " the bibliographic information first. To this end, we would"
+         " construct  a 'Bibliographic Information' category, and set it's"
+         " order to 0."
+         )
+
     })
 
     class Meta:
@@ -210,8 +212,8 @@ class Variable(polymodels.PolymorphicModel):
         "default": "",
         "max_length": 100000,
         "help_text":
-        ("A JSON field representing when to ask for the value of this variable."
-         " See :ref:`_branching_logic` for more details.")
+        ("A JSON field representing when to ask for the value of this "
+         "variable. See :ref:`_branching_logic` for more details.")
     })
 
 

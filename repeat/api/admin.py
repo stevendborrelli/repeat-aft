@@ -10,4 +10,3 @@ for _, value in models.__dict__.items():
     except TypeError:
         pass
 # admin.site.register()
-

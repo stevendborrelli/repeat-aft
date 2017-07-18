@@ -9,7 +9,7 @@ from rest_framework import response
 from rest_framework import generics
 from rest_framework import permissions
 from rest_framework import views
-from . import analysis
+from .analysis import analysis
 from . import models
 from . import serializers
 
@@ -72,7 +72,7 @@ class VariablesByDomain(views.APIView):
 
     def get(self, request, pk=None):
         # Ensure such a domain exists, or raise a 404
-        _ = django.shortcuts.get_object_or_404(models.Domain, pk=pk)
+        django.shortcuts.get_object_or_404(models.Domain, pk=pk)
         # Filter for Variables that have this domain in their .domains field
         # TODO: use values(*fields) or only() to only fetch the names
         return response.Response(
