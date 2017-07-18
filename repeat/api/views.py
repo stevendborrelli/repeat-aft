@@ -9,9 +9,9 @@ from rest_framework import response
 from rest_framework import generics
 from rest_framework import permissions
 from rest_framework import views
-from .analysis import analysis
-from . import models
-from . import serializers
+from api.analysis import analysis
+from api import models
+from api import serializers
 
 # API Schema views
 # TODO: Automatically export/encode as a simple .json schema file

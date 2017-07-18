@@ -2,7 +2,7 @@ import factory
 import faker
 import json
 
-from .. import models
+from api import models
 from pdfutil import test_pdfutil
 
 fake = faker.Faker()

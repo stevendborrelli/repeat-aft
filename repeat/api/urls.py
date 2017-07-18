@@ -6,7 +6,7 @@ The `urlpatterns` list routes URLs to views. For more information please see:
 
 from django.conf.urls import url
 from rest_framework.urlpatterns import format_suffix_patterns
-from . import views
+from api import views
 
 
 def list_url(name, view, plural=None):

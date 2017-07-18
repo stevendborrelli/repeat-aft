@@ -1,7 +1,8 @@
 import doctest
 import os
 import unittest
-from . import pdfutil
+
+from pdfutil import pdfutil
 
 
 def read_bytes(path):

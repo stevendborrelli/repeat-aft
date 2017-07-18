@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.db import models as django_models
-from . import models
+from api import models
 
 # Register your models here.
 for _, value in models.__dict__.items():
