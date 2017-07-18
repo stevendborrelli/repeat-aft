@@ -1,8 +1,6 @@
 language: nix
 
-install:
-  - travis_wait nix-shell --no-build-output
-  - cd repeat/pdfutil; ./create_pdfs.py; cd -
+install: travis_wait nix-shell --no-build-output
 
 script: nix-shell --run "bash scripts/test.sh"
 
