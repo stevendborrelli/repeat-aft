@@ -18,6 +18,7 @@
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 import os
 import sys
+import django
 sys.path.insert(0, os.path.abspath("../repeat"))
 
 # -- General configuration ------------------------------------------------
@@ -33,7 +34,6 @@ extensions = ['sphinx.ext.autodoc', 'sphinx.ext.napoleon',
               'sphinx.ext.coverage', 'sphinx.ext.viewcode']
 
 # We've gotta set up Django if we're going to import modules with autodoc
-import django
 os.environ["DJANGO_SETTINGS_MODULE"] = "repeat.settings"
 django.setup()
 

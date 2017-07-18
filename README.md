@@ -32,7 +32,7 @@ The design, usage, and Python API documentation is provided via [Sphinx][sphinx]
 and hosted on [Read the Docs][readthedocs]. The JSON API documentation is done
 via [Swagger][swagger] (in the future, it will hopefully be automatically build
 in Travis CI and hosted on Github pages).
-   
+
 [ripeta]: http://www.ripeta.com/
 [frontend]: https://github.com/ripeta/repeat-frontend
 [docs]: http://repeat-aft.readthedocs.io/en/latest/?badge=latest

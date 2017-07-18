@@ -9,8 +9,8 @@
 # copies of the Software, and to permit persons to whom the Software is
 # furnished to do so, subject to the following conditions:
 
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
 """ Utilities to extract strings from PDFs """
 
 import logging
@@ -36,7 +36,7 @@ def pdf_to_text(data, logger=logger):
         See ``pdf_file_to_text``
     """
     temp = tempfile.NamedTemporaryFile(delete=False)
-    with temp as f:
+    with temp:
         temp.write(data)
 
     return pdf_file_to_text(temp.name, logger=logger)
@@ -59,7 +59,8 @@ def pdf_file_to_text(filename, logger=logger):
     Examples:
 
         >>> import os.path
-        >>> pdf_file_to_text(os.path.join(os.path.dirname(__file__), "blank.pdf"))
+        >>> path = os.path.join(os.path.dirname(__file__), "blank.pdf")
+        >>> pdf_file_to_text(path)
         '\\x0c'
     """
     completed = subprocess.run(["pdftotext", "-enc", "UTF-8", filename, "-"],

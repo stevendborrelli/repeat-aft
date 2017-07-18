@@ -5,7 +5,6 @@ import django.core.files.uploadedfile
 import django.test
 import factory
 import faker
-import io
 import json
 
 from . import factories

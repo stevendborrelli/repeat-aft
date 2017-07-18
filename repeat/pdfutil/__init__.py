@@ -1,1 +1,1 @@
-from .pdfutil import *
+__all__ = ["pdfutil"]
