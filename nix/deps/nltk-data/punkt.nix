@@ -1,10 +1,12 @@
-{ stdenv, lib, fetchzip }:
+{ stdenv, lib, fetchurl }:
 
 stdenv.mkDerivation {
   name = "nltk_data.punkt";
-  src = fetchzip {
-    url = https://github.com/nltk/nltk_data/raw/gh-pages/packages/tokenizers/punkt.zip;
-    sha256 = "11xckn0jfdqcqdpmmslj4b1hpfhyxn59yadx2xsbka3kkb60mx61";
+
+  src = fetchurl {
+    url = https://github.com/ripeta/nltk_data/raw/fd2cbbc424f6b497bd5e2eeabef81b5d0d0613e4/packages/tokenizers/punkt.tar.gz;
+    sha256 = "07h6c4rlk6cz45z2n3gy7frvjsl8vzyn008kh0cc4av3ykrga3dp";
+
   };
 
   installPhase = ''

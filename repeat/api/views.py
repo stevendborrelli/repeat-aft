@@ -9,7 +9,7 @@ from rest_framework import response
 from rest_framework import generics
 from rest_framework import permissions
 from rest_framework import views
-from . import analysis
+from .analysis import analysis
 from . import models
 from . import serializers
 
