@@ -90,7 +90,6 @@ class Extract(views.APIView):
 
     TODO: multiple
     """
-
     @staticmethod
     def extract_all(text):
         """ Extract Values with all available plugins """

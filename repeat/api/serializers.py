@@ -2,6 +2,7 @@ from . import models
 
 # Serializers that export every field
 Domain = models.get_serializer(models.Domain)
+Category = models.get_serializer(models.Category)
 Paper = models.get_serializer(models.Paper)
 Variable = models.get_serializer(models.Variable)
 Binary = models.get_serializer(models.Binary)
