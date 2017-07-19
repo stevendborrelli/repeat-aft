@@ -30,6 +30,10 @@ urlpatterns = [
     list_url("domain", views.DomainList.as_view()),
     crud_url("domain", views.DomainCRUD.as_view()),
 
+    # Domains
+    list_url("category", views.CategoryList.as_view(), plural="categories"),
+    crud_url("category", views.CategoryCRUD.as_view(), plural="categories"),
+
     # Papers
     list_url("paper", views.PaperList.as_view()),
     crud_url("paper", views.PaperCRUD.as_view()),
