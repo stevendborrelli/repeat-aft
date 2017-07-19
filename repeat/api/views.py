@@ -89,9 +89,28 @@ class Extract(views.APIView):
     TODO: multiple
     """
 
+    @staticmethod
+    def extract_all(text):
+        """ Extract Values with all available plugins """
+        all_responses = dict()
+        for variable in models.Variable.objects.all():
+            try:
+                all_responses[variable.pk] = analysis.extract(text,
+                                                              variable.pk)
+            except ImportError:
+                continue
+        return all_responses
+
     def get(self, request, paperpk=None, varpk=None):
         if varpk is not None:
             _ = django.shortcuts.get_object_or_404(models.Variable, pk=varpk)
         paper = django.shortcuts.get_object_or_404(models.Paper, pk=paperpk)
         text, _ = paper.get_text()
-        return response.Response(data={"value": analysis.extract(text, varpk)})
+
+        # If one is specified, return that one
+        if varpk is not None:
+            return response.Response(
+                data={"value": analysis.extract(text, varpk)})
+
+        # Extract all variables and return them
+        return response.Response(data=self.extract_all(text))
