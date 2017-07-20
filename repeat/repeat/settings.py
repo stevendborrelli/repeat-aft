@@ -129,3 +129,5 @@ STATIC_URL = '/static/'
 STATIC_ROOT = 'static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+if not os.access(MEDIA_ROOT, os.W_OK | os.X_OK):
+    MEDIA_ROOT = "/tmp/repeat-media"

@@ -14,8 +14,8 @@ description of this project.
    :caption: Contents:
    :maxdepth: 2
 
-   design
-   design/database
    usage
    usage/branching-logic
+   design
+   design/database
    python

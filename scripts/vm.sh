@@ -11,14 +11,14 @@ function destroy {
 
 # Run some basic tests to see if some static files are present
 function curl_tests {
-  curl "$1:80" > /dev/null
-  curl "$1:80/static/admin/css/login.css" > /dev/null
-  curl "$1:80/static/rest_framework/css/default.css" > /dev/null
+  curl -s "$1:80" > /dev/null
+  curl -s "$1:80/static/admin/css/login.css" > /dev/null
+  curl -s "$1:80/static/rest_framework/css/default.css" > /dev/null
 }
 
 deployment_name="test_deployment"
 if [[ "$1" == ssh ]]; then
-  nixops ssh -d "$test_deployment" webserver; exit $?
+  TERM=xterm nixops ssh -d "$test_deployment" webserver -- -o SendEnv=TERM; exit $?
 
 ## Cleanup
 

@@ -4,14 +4,6 @@ pdfutil package
 Submodules
 ----------
 
-pdfutil.create_pdfs module
---------------------------
-
-.. automodule:: pdfutil.create_pdfs
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
 pdfutil.pdfutil module
 ----------------------
 

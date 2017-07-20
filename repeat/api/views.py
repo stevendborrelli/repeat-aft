@@ -7,7 +7,7 @@ from rest_framework import response
 # from rest_framework import schema
 # Other views
 from rest_framework import generics
-from rest_framework import permissions
+# from rest_framework import permissions # ripeta/repeat-aft#25
 from rest_framework import views
 from api.analysis import analysis
 from api import models
@@ -48,14 +48,16 @@ def list_and_crud(model, serializer, queryset=None):
                (generics.RetrieveUpdateDestroyAPIView, ), {})
     lst.queryset = queryset
     lst.serializer_class = serializer
-    lst.permission_classes = (permissions.IsAuthenticatedOrReadOnly, )
+    # lst.permission_classes = (permissions.IsAuthenticatedOrReadOnly, )
     rud.queryset = queryset
     rud.serializer_class = serializer
-    rud.permission_classes = (permissions.IsAuthenticatedOrReadOnly, )
+    # rud.permission_classes = (permissions.IsAuthenticatedOrReadOnly, )
     return (lst, rud)
 
 
 DomainList, DomainCRUD = list_and_crud(models.Domain, serializers.Domain)
+
+CategoryList, CategoryCRUD = list_and_crud(models.Category, serializers.Category)
 
 PaperList, PaperCRUD = list_and_crud(models.Paper, serializers.Paper)
 
@@ -88,7 +90,6 @@ class Extract(views.APIView):
 
     TODO: multiple
     """
-
     @staticmethod
     def extract_all(text):
         """ Extract Values with all available plugins """

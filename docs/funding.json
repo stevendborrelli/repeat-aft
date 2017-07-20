@@ -1,0 +1,8 @@
+{
+    "domains": ["core"],
+    "name": "funding",
+    "label": "Where did the funding for this study come from?",
+    "identifier": false,
+    "order": 5,
+    "skip_logic": ""
+}

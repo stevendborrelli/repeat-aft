@@ -5,7 +5,8 @@
   nginx,               #
   gunicorn,            #
   externalPort ? 80,   # nginx will listen for connections here
-  internalPort ? 8000  # gunicorn will listen for connections here
+  internalPort ? 8000, # gunicorn will listen for connections here
+  environment ? {}     # dictionary of environment variables for gunicorn
 }:
 
 let
@@ -44,6 +45,7 @@ in {
 
   systemd.services = {
     repeat = {
+      inherit environment;
       enable = true;
       description = "${app.pname}";
       wants = [ "nginx.service" ];
