@@ -41,6 +41,6 @@ buildPythonPackage rec {
     homepage = https://github.com/ripeta/repeat-aft;
     description = "";
     maintainers = with maintainers; [ siddharthist ];
-    platforms = platforms.linux;
+    platforms = platforms.unix;
   };
 }
