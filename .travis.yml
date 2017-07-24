@@ -1,15 +1,30 @@
-language: nix
-
-install: travis_wait nix-shell --no-build-output
-
-script: nix-shell --run "bash scripts/test.sh"
-
-env:
-  # subprocess.run was introduced in 3.5
-  - PYTHON_VERSION=3.5
-  - PYTHON_VERSION=3.6
-
 matrix:
   fast_finish: true
+  # subprocess.run was introduced in 3.5
+  include:
+    - language: nix
+      os: linux
+      env: PYTHON_VERSION=3.6
+      install: travis_wait nix-shell --no-build-output
+      script: nix-shell --run "bash scripts/test.sh"
+
+    - language: nix
+      os: linux
+      env: PYTHON_VERSION=3.5
+      install: travis_wait nix-shell --no-build-output
+      script: nix-shell --run "bash scripts/test.sh"
+
+    - language: python
+      python: "3.6"
+      os: osx
+      osx_image: xcode7.3
+      before_install:
+        - brew install xpdf
+      install:
+        - pip install -r requirements.txt
+        - python -m nltk.downloader all
+      script: ./setup.py test
+
   allow_failures:
-    - env: PYTHON_VERSION=3.5
+    - os: linux
+      env: PYTHON_VERSION=3.5
