@@ -1,10 +1,12 @@
 { pkgs ? import <nixpkgs> { } }:
 
-# We need a version more recent than 17.03 for a newer version of django-rest-framework, faker, and factory_boy
+# This is the most recent nixpkgs 17.03 stable commit
 import (pkgs.fetchFromGitHub {
-  # TODO: See NixOS/nixpkgs#27106 and ripeta/repeat-aft#19
-  owner  = "siddharthist";
-  repo   = "nixpkgs";
-  rev    = "f4c4a74624e116c0ba1e606eaacd7407f322d340";
-  sha256 = "1mg5fwfm2690ci7yhx7b84gqm2gynkfm8s13ipglsnbzqvxqd54p";
+  owner  = "NixOS";
+  # repo   = "nixpkgs";
+  # rev    = "17.03";
+  # sha256 = "1fw9ryrz1qzbaxnjqqf91yxk1pb9hgci0z0pzw53f675almmv9q2";
+  repo   = "nixpkgs-channels";
+  rev    = "8d9c8383f921e84eac21d1125cbaee1f3fa97aed";
+  sha256 = "04g1nx1rw32ryi8ghdbiyf2g08v3vimbrvki2mjyg33q6kpx6qig";
 }) { }

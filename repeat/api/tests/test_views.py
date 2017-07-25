@@ -34,7 +34,7 @@ class ViewTests(django.test.TestCase):
                 self.assertEqual(b'{"value":null}', c.get(var_url).content)
 
             # Extract all at once
-            self.assertEqual(b'{"funding":null,"grant_id":null}',
+            self.assertEqual(b'{"grant_id":null,"funding":null}',
                              c.get(paper_url).content)
 
 

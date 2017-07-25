@@ -37,7 +37,10 @@ def pdf_to_text(data, logger=logger):
     """
     temp = tempfile.NamedTemporaryFile(delete=False)
     with temp:
-        temp.write(data)
+        try:
+            temp.write(data)
+        except TypeError:
+            temp.write(data.encode("utf8"))
 
     return pdf_file_to_text(temp.name, logger=logger)
 

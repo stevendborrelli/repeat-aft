@@ -12,4 +12,4 @@ env:
 matrix:
   fast_finish: true
   allow_failures:
-    - env: PYTHON_VERSION=3.5
+    - env: PYTHON_VERSION=3.6

@@ -16,6 +16,7 @@ description of this project.
 
    usage
    usage/branching-logic
+   usage/nix
    design
    design/database
    python

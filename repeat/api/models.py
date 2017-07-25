@@ -108,7 +108,10 @@ class Paper(models.Model):
         f.open(mode=mode)
         content = f.read()
         f.close()
-        return content
+        try:
+            return content.decode("utf8", errors="ignore")
+        except AttributeError:
+            return content
 
     def _read_document(self):
         # For some reason, using the .open() method in a "with" doesn't work

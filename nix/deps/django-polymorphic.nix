@@ -1,5 +1,8 @@
 { lib, buildPythonPackage, fetchPypi, django }:
 
+# As of 17.09, this is part of nixpkgs:
+# https://github.com/NixOS/nixpkgs/pull/26914
+
 buildPythonPackage rec {
   pname = "django-polymorphic";
   version = "1.2";
