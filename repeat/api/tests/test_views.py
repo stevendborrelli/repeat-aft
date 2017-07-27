@@ -7,6 +7,7 @@ import doctest
 import django.core.files.uploadedfile
 import django.test
 import factory
+import json
 
 from . import factories
 from pdfutil import test_pdfutil
@@ -36,6 +37,16 @@ class ViewTests(django.test.TestCase):
             # Extract all at once
             self.assertEqual(b'{"funding":null,"grant_id":null}',
                              c.get(paper_url).content)
+
+    def test_malformed_pdf(self):
+        """ Uploading a malformed PDF leads to an error, not a crash """
+        paper = factories.Paper.create(document=factory.django.FileField(
+            data=b""))
+        paper_url = "{}/{}".format(EXTRACT_URL, paper.unique_id)
+        c = django.test.Client()
+        # Extract all at once
+        d = json.loads(c.get(paper_url).content)
+        self.assertEqual({"error"}, set(d.keys()))
 
 
 def load_tests(loader, tests, ignore):

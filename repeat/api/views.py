@@ -13,6 +13,8 @@ from api.analysis import analysis
 from api import models
 from api import serializers
 
+from pdfutil import pdfutil
+
 # API Schema views
 # TODO: Automatically export/encode as a simple .json schema file
 # http://core-api.github.io/python-client/api-guide/codecs/
@@ -106,7 +108,10 @@ class Extract(views.APIView):
         if varpk is not None:
             _ = django.shortcuts.get_object_or_404(models.Variable, pk=varpk)
         paper = django.shortcuts.get_object_or_404(models.Paper, pk=paperpk)
-        text, _ = paper.get_text()
+        try:
+            text, _ = paper.get_text()
+        except pdfutil.MalformedPDF as e:
+            return response.Response(data={"error": e.json()})
 
         # If one is specified, return that one
         if varpk is not None:

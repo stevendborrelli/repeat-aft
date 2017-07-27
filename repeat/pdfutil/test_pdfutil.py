@@ -30,6 +30,10 @@ class PDFUtilTests(unittest.TestCase):
         self.assertEqual(BLANK_RESULT, pdfutil.pdf_to_text(BLANK))
         self.assertEqual(LOREM_RESULT, pdfutil.pdf_to_text(LOREM))
 
+        with self.assertRaises(pdfutil.MalformedPDF):
+            pdfutil.pdf_to_text(b"")
+            pdfutil.pdf_to_text(b"Not a PDF")
+
 
 def load_tests(loader, tests, ignore):
     """ Enable unittest discovery of doctests """
