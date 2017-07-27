@@ -1,25 +1,23 @@
+language: nix
+
 matrix:
   fast_finish: true
   # subprocess.run was introduced in 3.5
   include:
-    - language: nix
-      os: linux
+    - os: linux
       env: PYTHON_VERSION=3.6
       install: travis_wait nix-shell --no-build-output
       script: nix-shell --run "bash scripts/test.sh"
 
-    - language: nix
-      os: linux
+    - os: linux
       env: PYTHON_VERSION=3.5
       install: travis_wait nix-shell --no-build-output
       script: nix-shell --run "bash scripts/test.sh"
 
-    - language: python
-      python: "3.6"
-      os: osx
+    - os: osx
       osx_image: xcode7.3
       before_install:
-        - brew install xpdf
+        - nix-env -iA nixpkgs.python36Packages.pip
       install:
         - pip install -r requirements.txt
         - python -m nltk.downloader all
