@@ -6,11 +6,11 @@ Usage Documentation
 Installing Requirements
 -----------------------
 
-Linux
-^^^^^
-
 This project uses `Nix <http://nixos.org/nix/>`_ to manage its dependencies.
 Please install that first, and it will handle the rest.
+
+Linux
+^^^^^
 
 Now, let's build the project and run the tests:
 
@@ -27,10 +27,23 @@ OSX
 Unfortunately, `Nix <http://nixos.org/nix/>`_ currently
 `cannot install a dependency of Django on
 OSX <https://github.com/NixOS/nixpkgs/issues/18194>`_. Therefore, we cannot use
-it to manage our Python packages. Instead, please install
-`Python 3.6 <https://www.python.org/downloads/mac-osx/>`_, ``pip``,
-``virtualenv``, and ``xpdf`` (if you're not sure how to do this, read up on
-`Homebrew <https://brew.sh/>`_). Now, let's build the project and run the tests:
+it to manage our Python packages. Instead, first install Python, ``pip``, and
+``virtualenv``:
+
+.. code-block:: shell
+
+    nix-env -i python36 python36Packages.pip python36Packages.virtualenv
+
+To isolate the dependencies from your system Python installation, we'll create
+and enter a `Virtual
+Environment <http://docs.python-guide.org/en/latest/dev/virtualenvs/>`_:
+
+.. code-block:: shell
+
+    virtualenv env
+    source env/bin/activate
+
+Now, let's build the project and run the tests:
 
 .. code-block:: shell
 
@@ -38,8 +51,6 @@ it to manage our Python packages. Instead, please install
     pip install -r requirements.txt  # install Python packages
     ./setup.py test                  # run unit tests
     ./setup.py build                 # build
-
-To run the virtual machine demo requires Nix.
 
 Running the Server
 ------------------
