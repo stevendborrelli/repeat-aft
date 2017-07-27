@@ -3,6 +3,12 @@
 Usage Documentation
 ===================
 
+Installing Requirements
+-----------------------
+
+Linux
+^^^^^
+
 This project uses `Nix <http://nixos.org/nix/>`_ to manage its dependencies.
 Please install that first, and it will handle the rest.
 
@@ -15,24 +21,79 @@ Now, let's build the project and run the tests:
     nix-build        # build
     ls ./result
 
-Awesome! The next step is to get the server running on a
-`virtual machine <https://en.wikipedia.org/wiki/Virtual_machine>`_. If you
-don't have `VirtualBox <https://www.virtualbox.org/>`_ installed, please get it
-now. The next part is easy:
+OSX
+^^^
+
+Unfortunately, `Nix <http://nixos.org/nix/>`_ currently
+`cannot install a dependency of Django on
+OSX <https://github.com/NixOS/nixpkgs/issues/18194>`_. Therefore, we cannot use
+it to manage our Python packages. Instead, please install
+`Python 3.6 <https://www.python.org/downloads/mac-osx/>`_, ``pip``,
+``virtualenv``, and ``xpdf`` (if you're not sure how to do this, read up on
+`Homebrew <https://brew.sh/>`_). Now, let's build the project and run the tests:
+
+.. code-block:: shell
+
+    git checkout osx                 # branch with requirements.txt
+    pip install -r requirements.txt  # install Python packages
+    ./setup.py test                  # run unit tests
+    ./setup.py build                 # build
+
+To run the virtual machine demo requires Nix.
+
+Running the Server
+------------------
+
+.. _local:
+
+Locally
+^^^^^^^
+
+To run Django locally, run
+
+.. code-block:: shell
+
+    ./repeat/reset.sh               # set up the database
+    ./repeat/manage.py runserver &  # "&" means "run in the background"
+    ip=localhost:8000
+    url=$ip/api/v0
+
+and proceed to the section Demo_.
+
+.. _virtual-machine:
+
+On a Virtual Machine
+^^^^^^^^^^^^^^^^^^^^
+
+To get the server running on a `virtual machine
+<https://en.wikipedia.org/wiki/Virtual_machine>`_ will require
+`VirtualBox <https://www.virtualbox.org/>`_. Then:
 
 .. code-block:: shell
 
     nix-env -i nixops     # we use NixOps to deploy to Virtualbox
     bash ./scripts/vm.sh
 
-At the end of the log, you should see an IP address. You can navigate to the
-address in your web browser, and you should recieve a 404 page. Now, we can
-start playing with the API!
+If you see any confirmation dialogs, just say "yes". At the end of the log, you
+should see an IP address. You can navigate to the address in your web browser,
+and you should recieve a 404 page. Now, we can start playing with the API!
+Save the IP address as follows and proceed to the section Demo_:
 
 .. code-block:: shell
 
     ip=xxx.xxx.xxx.xxx # replace xxx with the appropriate value
     url=$ip/api/v0
+
+
+.. _Demo:
+
+Demo
+----
+
+Let's look at some queries:
+
+.. code-block:: shell
+
     curl --silent $url/domains
     curl -s $url/categories
     curl -s $url/variables
