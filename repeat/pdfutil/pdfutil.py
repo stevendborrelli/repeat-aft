@@ -20,6 +20,13 @@ import tempfile
 logger = logging.getLogger(__name__)
 
 
+class MalformedPDF(Exception):
+    """ Bytes that were supposed to represent a valid PDF do not. """
+
+    def json(self):
+        return repr(self)
+
+
 def pdf_to_text(data, logger=logger):
     """ Convert PDF data to a string
 
@@ -55,6 +62,7 @@ def pdf_file_to_text(filename, logger=logger):
     Raises:
         FileNotFoundError: When ``pdftotext`` isn't installed
         subprocess.CalledProcessError: When ``pdftotext`` exits with an error
+        MalformedPDF: When the data passed didn't represent a PDF file
 
     Examples:
 
@@ -70,10 +78,15 @@ def pdf_file_to_text(filename, logger=logger):
     try:
         completed.check_returncode()
     except subprocess.CalledProcessError as e:
-        logging.error(e)
-        logging.error("code: {}".format(completed.returncode))
-        logging.error("stdout: {}".format(completed.stdout))
-        logging.error("stderr: {}".format(completed.stderr))
-        raise e
+        # This is hacky, I sure wish pdftotext had a JSON API or something
+        if b"May not be a PDF file" in completed.stderr:
+            raise MalformedPDF(completed.stderr)
+
+        else:
+            logging.error(e)
+            logging.error("code: {}".format(completed.returncode))
+            logging.error("stdout: {}".format(completed.stdout))
+            logging.error("stderr: {}".format())
+            raise e
 
     return completed.stdout.decode("utf8", "ignore")

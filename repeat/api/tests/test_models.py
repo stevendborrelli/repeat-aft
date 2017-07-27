@@ -8,6 +8,7 @@ import faker
 import json
 
 from . import factories
+from pdfutil import pdfutil
 from pdfutil import test_pdfutil
 
 from .. import models
@@ -64,6 +65,12 @@ class PaperTests(django.test.TestCase):
                          lorem_paper.get_text())
         self.assertEqual((test_pdfutil.LOREM_RESULT, True),
                          lorem_paper.get_text())
+
+        # Handles malformed data
+        bad_paper = factories.Paper.create(document=factory.django.FileField(
+            data=b"Not a PDF"))
+        with self.assertRaises(pdfutil.MalformedPDF):
+            bad_paper.get_text()
 
 
 def load_tests(loader, tests, ignore):
