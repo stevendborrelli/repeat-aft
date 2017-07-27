@@ -16,6 +16,7 @@ with pkgs; let
 in with pyPkgs; callPackage ./nix/repeat.nix {
   django-polymorphic = callPackage ./nix/deps/django-polymorphic.nix { };
   django-jsonfield = callPackage ./nix/deps/django-jsonfield.nix { };
+  django-registration = callPackage ./nix/deps/django-registration.nix { };
   punkt = callPackage ./nix/deps/nltk-data/punkt.nix { };
   # coreapi = callPackage ./nix/deps/coreapi.nix {
   #     coreschema = callPackage ./nix/deps/coreschema.nix { };

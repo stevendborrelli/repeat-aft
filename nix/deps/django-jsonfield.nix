@@ -17,5 +17,6 @@ buildPythonPackage rec {
     homepage = "https://github.com/django-polymorphic/django-polymorphic";
     description = "A reusable JSONField model for Django to store ad-hoc data";
     license = lib.licenses.mit;
+    platforms = django.meta.platforms;
   };
 }

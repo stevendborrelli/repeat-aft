@@ -7,7 +7,8 @@ from rest_framework import response
 # from rest_framework import schema
 # Other views
 from rest_framework import generics
-# from rest_framework import permissions # ripeta/repeat-aft#25
+from rest_framework import authentication
+from rest_framework import permissions
 from rest_framework import views
 from api.analysis import analysis
 from api import models
@@ -36,22 +37,25 @@ def list_and_crud(model, serializer, queryset=None):
         class FooList(generics.ListCreateAPIView):
             queryset = models.Foo.objects.all()
             serializer_class = serializers.FooSerializer
+            ...
 
 
         class FooRUD(generics.RetrieveUpdateDestroyAPIView):
             queryset = models.Foo.objects.all()
             serializer_class = serializers.FooSerializer
+            ...
     """
     queryset = model.objects.all() if queryset is None else queryset
     lst = type(model.__name__ + "List", (generics.ListCreateAPIView, ), {})
     rud = type(model.__name__ + "CRUD",
                (generics.RetrieveUpdateDestroyAPIView, ), {})
-    lst.queryset = queryset
-    lst.serializer_class = serializer
-    # lst.permission_classes = (permissions.IsAuthenticatedOrReadOnly, )
-    rud.queryset = queryset
-    rud.serializer_class = serializer
-    # rud.permission_classes = (permissions.IsAuthenticatedOrReadOnly, )
+
+    for cls in (lst, rud):
+        cls.queryset = queryset
+        cls.serializer_class = serializer
+        cls.authentication_classes = (authentication.BasicAuthentication, )
+        cls.permission_classes = (permissions.IsAuthenticatedOrReadOnly, )
+
     return (lst, rud)
 
 

@@ -4,8 +4,8 @@
   # checkInputs
   faker, factory_boy,
   # propagatedBuildInputs
-  djangorestframework, django-polymorphic, django-jsonfield, pluginbase, nltk,
-  punkt, xpdf
+  djangorestframework, django-polymorphic, django-jsonfield,
+  django-registration, pluginbase, nltk, punkt, xpdf
 }:
 
 buildPythonPackage rec {
@@ -24,6 +24,7 @@ buildPythonPackage rec {
     djangorestframework
     django-polymorphic
     django-jsonfield
+    django-registration
     pluginbase
     nltk
     xpdf # scrape text from PDFs

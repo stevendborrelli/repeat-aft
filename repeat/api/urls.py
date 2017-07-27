@@ -4,23 +4,23 @@ The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.11/topics/http/urls/
 """
 
-from django.conf.urls import url
+from django.conf import urls
 from rest_framework.urlpatterns import format_suffix_patterns
 from api import views
 
 
 def list_url(name, view, plural=None):
     """ Make a url of the form /resources for a given resource """
-    return url(r'^{}$'.format(plural or name + "s"),
-               view,
-               name="{}_list".format(name))
+    return urls.url(r'^{}$'.format(plural or name + "s"),
+                    view,
+                    name="{}_list".format(name))
 
 
 def crud_url(name, view, plural=None):
     """ Make a url of the form /resources/pk for a given resource """
-    return url(r'^{}/(?P<pk>[^/]+)$'.format(plural or name + "s"),
-               view,
-               name="{}_crud".format(name))
+    return urls.url(r'^{}/(?P<pk>[^/]+)$'.format(plural or name + "s"),
+                    view,
+                    name="{}_crud".format(name))
 
 
 urlpatterns = [
@@ -31,8 +31,10 @@ urlpatterns = [
     crud_url("domain", views.DomainCRUD.as_view()),
 
     # Categories
-    list_url("category", views.CategoryList.as_view(), plural="categories"),
-    crud_url("category", views.CategoryCRUD.as_view(), plural="categories"),
+    list_url(
+        "category", views.CategoryList.as_view(), plural="categories"),
+    crud_url(
+        "category", views.CategoryCRUD.as_view(), plural="categories"),
 
     # Papers
     list_url("paper", views.PaperList.as_view()),
@@ -53,13 +55,12 @@ urlpatterns = [
     crud_url("value", views.ValueCRUD.as_view()),
 
     # List the variables of a domain
-    url(r"^lists/(?P<pk>[^/]+)$",
-        views.VariablesByDomain.as_view(),
-        name="variable_lists"),
-
-    url(r"^extract/(?P<paperpk>[^/]+)(/(?P<varpk>[^/]+))?$",
-        views.Extract.as_view(),
-        name="extract")
+    urls.url(r"^lists/(?P<pk>[^/]+)$",
+             views.VariablesByDomain.as_view(),
+             name="variable_lists"),
+    urls.url(r"^extract/(?P<paperpk>[^/]+)(/(?P<varpk>[^/]+))?$",
+             views.Extract.as_view(),
+             name="extract")
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
