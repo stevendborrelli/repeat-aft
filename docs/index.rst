@@ -17,5 +17,4 @@ description of this project.
    usage
    usage/branching-logic
    design
-   design/database
    python
