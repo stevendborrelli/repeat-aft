@@ -17,11 +17,25 @@ matrix:
     - os: osx
       osx_image: xcode7.3
       before_install:
-        - nix-env -iA nixpkgs.python36Packages.setuptools nixpkgs.python36Packages.pip
+        - nix-shell -p python36Packages.setuptools -p python36Packages.pip
       install:
-        - pip install -r requirements.txt
-        - python -m nltk.downloader all
-      script: ./setup.py test
+        - >
+          nix-shell
+          -p python36Packages.setuptools -p python36Packages.pip
+          --run "pip3 install -r requirements.txt"
+        - >
+          nix-shell
+          -p python36Packages.setuptools -p python36Packages.pip
+          --run "python -m nltk.downloader all"
+        - >
+          nix-shell
+          -p python36Packages.setuptools -p python36Packages.pip
+          --run "pip3 install -r requirements.txt"
+      script:
+        - >
+          nix-shell
+          -p python36Packages.setuptools -p python36Packages.pip
+          --run "python3 setup.py test"
 
   allow_failures:
     - os: linux
