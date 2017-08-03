@@ -27,7 +27,7 @@ OSX
 Unfortunately, `Nix <http://nixos.org/nix/>`_ currently
 `cannot install a dependency of Django on
 OSX <https://github.com/NixOS/nixpkgs/issues/18194>`_. Therefore, we cannot use
-it to manage our Python packages. Instead, first install Python, ``pip``, and
+it to manage our Python packages. Instead, first install Python, ``pip3``, and
 ``virtualenv``:
 
 .. code-block:: shell
@@ -43,14 +43,27 @@ Environment <http://docs.python-guide.org/en/latest/dev/virtualenvs/>`_:
     virtualenv env
     source env/bin/activate
 
+We need to download some data from the NLTK project. Drop into the Python 3
+shell and install the Punkt tokenizer using the NLTK downloader:
+
+.. code-block:: shell
+
+    python3
+
+.. code-block:: python
+
+    import nltk
+    nltk.download()
+    quit()
+
 Now, let's build the project and run the tests:
 
 .. code-block:: shell
 
-    git checkout osx                 # branch with requirements.txt
-    pip install -r requirements.txt  # install Python packages
-    ./setup.py test                  # run unit tests
-    ./setup.py build                 # build
+    git checkout osx                  # branch with requirements.txt
+    pip3 install -r requirements.txt  # install Python packages
+    ./setup.py test                   # run unit tests
+    ./setup.py build                  # build
 
 Running the Server
 ------------------
