@@ -17,4 +17,5 @@ description of this project.
    usage
    usage/branching-logic
    design
+   contributing
    python
