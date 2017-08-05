@@ -43,25 +43,17 @@ Environment <http://docs.python-guide.org/en/latest/dev/virtualenvs/>`_:
     virtualenv env
     source env/bin/activate
 
-We need to download some data from the NLTK project. Drop into the Python 3
-shell and install the Punkt tokenizer using the NLTK downloader:
+Download all the required packages and some data from the NLTK project:
 
 .. code-block:: shell
 
-    python3
-
-.. code-block:: python
-
-    import nltk
-    nltk.download()
-    quit()
-
-Now, let's build the project and run the tests:
-
-.. code-block:: shell
-
-    git checkout osx                  # branch with requirements.txt
     pip3 install -r requirements.txt  # install Python packages
+    python3 -m nltk.downloader punkt  # install an NLTK corpus
+
+Let's build the project and run the tests:
+
+.. code-block:: shell
+
     ./setup.py test                   # run unit tests
     ./setup.py build                  # build
 
