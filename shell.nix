@@ -31,5 +31,5 @@ in with pkgs; with pkgs.python3Packages; buildPythonPackage {
     yapf        # automatically format source code
 
     # Only install virtualbox if we're not in Travis, it's a little heavy
-  ] ++ (if builtins.getEnv "CI" == "" then [ virtualbox ] else []);
+  ] ++ lib.optional (builtins.getEnv "CI" == "" && stdenv.isLinux) virtualbox;
 }

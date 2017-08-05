@@ -1,15 +1,30 @@
 language: nix
 
-install: travis_wait nix-shell --no-build-output
-
-script: nix-shell --run "bash scripts/test.sh"
-
-env:
-  # subprocess.run was introduced in 3.5
-  - PYTHON_VERSION=3.5
-  - PYTHON_VERSION=3.6
-
 matrix:
   fast_finish: true
+  # subprocess.run was introduced in 3.5
+  include:
+    - os: linux
+      env: PYTHON_VERSION=3.6
+      install: travis_wait nix-shell --no-build-output
+      script: nix-shell --run "bash scripts/test.sh"
+
+    - os: linux
+      env: PYTHON_VERSION=3.5
+      install: travis_wait nix-shell --no-build-output
+      script: nix-shell --run "bash scripts/test.sh"
+
+    - os: osx
+      osx_image: xcode7.3
+      before_install:
+        - nix-env -i xpdf
+        - nix-shell -p python36Packages.virtualenv --run "virtualenv env"
+      install:
+        - source env/bin/activate && pip3 install -r requirements.txt
+        - source env/bin/activate && python3 -m nltk.downloader punkt
+      script:
+        - source env/bin/activate && python3 setup.py test
+
   allow_failures:
-    - env: PYTHON_VERSION=3.5
+    - os: linux
+      env: PYTHON_VERSION=3.5

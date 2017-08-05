@@ -1,0 +1,7 @@
+Faker>=0.7
+factory_boy>=2.8
+djangorestframework>=3.6
+django-polymorphic
+jsonfield
+pluginbase
+nltk
