@@ -74,7 +74,7 @@ To run Django locally, run
     ip=localhost:8000
     url=$ip/api/v0
 
-and proceed to the section Demo_.
+and proceed to the section :ref:`queries`.
 
 .. _virtual-machine:
 
@@ -93,7 +93,7 @@ To get the server running on a `virtual machine
 If you see any confirmation dialogs, just say "yes". At the end of the log, you
 should see an IP address. You can navigate to the address in your web browser,
 and you should recieve a 404 page. Now, we can start playing with the API!
-Save the IP address as follows and proceed to the section Demo_:
+Save the IP address as follows and proceed to the section :ref:`queries`:
 
 .. code-block:: shell
 
@@ -101,10 +101,10 @@ Save the IP address as follows and proceed to the section Demo_:
     url=$ip/api/v0
 
 
-.. _Demo:
+.. _queries:
 
-Demo
-----
+Queries
+-------
 
 Let's look at some queries:
 
