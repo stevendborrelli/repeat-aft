@@ -1,3 +1,6 @@
+"""
+This module implements the database structure.
+"""
 from django.core.files import uploadedfile
 from django.db import models
 from pdfutil import pdfutil
@@ -44,10 +47,7 @@ def json_str(cls=None, *, fields="__all__", exclude=None):
 
 @json_str
 class Domain(models.Model):
-    """
-    A domain is some scientific subfield. A domain contains many
-    variables, though each ``Variable`` can also belong to several domains.
-    """
+    """ See :ref:`concepts`. """
 
     name = models.TextField(**{
         "unique": True,
@@ -66,10 +66,8 @@ class Domain(models.Model):
 
 @json_str(exclude=("document", "document_text"))
 class Paper(models.Model):
-    """
-    An individual paper or study, belonging to one or several domains. A paper
-    should have Values corresponding to every Variable in its Domain(s).
-    """
+    """ See :ref:`concepts`. """
+
     domains = models.ManyToManyField(Domain)
     unique_id = models.TextField(**{
         "primary_key": True,
@@ -137,7 +135,7 @@ class Paper(models.Model):
 
 @json_str
 class Category(models.Model):
-    """ A category of variables such as "Methodology", or "Data Collection" """
+    """ See :ref:`concepts`. """
 
     name = models.TextField(**{
         "unique": True,
@@ -167,7 +165,7 @@ class Category(models.Model):
 
 @json_str(exclude=("polymorphic_ctype", ))
 class Variable(polymodels.PolymorphicModel):
-    """ A single variable, belonging to one or several Domains. """
+    """ See :ref:`concepts`. """
 
     domains = models.ManyToManyField(Domain)
     name = models.TextField(**{
@@ -247,7 +245,7 @@ class ManyFromMany(Variable):
 
 @json_str
 class Value(models.Model):
-    """ The value of a specific Variable for a specific Paper """
+    """ See :ref:`concepts`. """
     # Set up polymorphic reference to a subclass of Variable
     # https://docs.djangoproject.com/en/dev/ref/contrib/contenttypes/
     # content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
