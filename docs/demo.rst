@@ -1,7 +1,7 @@
-.. _usage:
+.. _demo:
 
-Usage Documentation
-===================
+Demo
+====
 
 Installing Requirements
 -----------------------
