@@ -51,8 +51,8 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'repeat-aft'
-copyright = '2017, Langston Barrett'
-author = 'Langston Barrett'
+copyright = '2017, ripeta, LLC'
+author = 'Ricochet Team'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -129,7 +129,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'repeat-aft.tex', 'repeat-aft Documentation',
-     'Langston Barrett', 'manual'),
+     'Ricochet Team', 'manual'),
 ]
 
 # -- Options for manual page output ---------------------------------------
